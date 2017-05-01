@@ -1,3 +1,6 @@
 [submodule "device-simulation"]
 	path = device-simulation
 	url = git@github.com:Azure/device-simulation-dotnet.git
+[submodule "webui"]
+	path = webui
+	url = git@github.com:Azure/azure-iot-pcs-remote-monitoring-webui.git
