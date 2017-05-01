@@ -12,13 +12,6 @@ Overview
 
 ... quick demonstrative examples ...
 
-Other documents
-===============
-
-* [Build and Run](docs/README.md)
-* [Docker](docs/DOCKER.md)
-* [Development setup](docs/DEV-SETUP.md)
-
 How to use it
 =============
 
@@ -41,27 +34,15 @@ Edge cases
 ... things to take into consideration ...
 ... known limitations ...
 
-Contributing
-============
+Other documents
+===============
 
-## Contribution license Agreement
+* [Contributing and development setup](CONTRIBUTING.md)
 
-If you want/plan to contribute, we ask you to sign a [CLA](https://cla.microsoft.com/) 
-(Contribution license Agreement). A friendly bot will remind you about it when you submit 
-a pull-request.
 
-## Development
-
-... notes about code style ...
-... how to run tests locally ...
-... requirements, e.g. Azure sub, IoT Hub setup etc. ...
-... useful scripts included in the project ...
-
-* [Development setup](docs/DEV-SETUP.md)
-
-[build-badge]: https://img.shields.io/travis/Azure/device-simulation-dotnet.svg
-[build-url]: https://travis-ci.org/Azure/device-simulation-dotnet
-[issues-badge]: https://img.shields.io/github/issues/azure/device-simulation-dotnet.svg
-[issues-url]: https://github.com/azure/device-simulation-dotnet/issues
+[build-badge]: https://img.shields.io/travis/Azure/azure-iot-pcs-remote-monitoring-dotnet.svg
+[build-url]: https://travis-ci.org/Azure/azure-iot-pcs-remote-monitoring-dotnet
+[issues-badge]: https://img.shields.io/github/issues/azure/azure-iot-pcs-remote-monitoring-dotnet.svg
+[issues-url]: https://github.com/azure/azure-iot-pcs-remote-monitoring-dotnet/issues
 [gitter-badge]: https://img.shields.io/gitter/room/azure/iot-pcs.js.svg
 [gitter-url]: https://gitter.im/azure/iot-pcs
