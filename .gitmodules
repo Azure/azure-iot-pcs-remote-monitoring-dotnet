@@ -10,3 +10,6 @@
 [submodule "azure-remote-monitoring-cli"]
 	path = azure-remote-monitoring-cli
 	url = git@github.com:Azure/azure-remote-monitoring-cli
+[submodule "iothub-manager"]
+	path = iothub-manager
+	url = git@github.com:Azure/iothub-manager-dotnet.git
