@@ -18,7 +18,7 @@ Overview
 Remote Monitoring is an end to end solution that showcases how a remote 
 monitoring IoT solution can be built and deployed for Azure IoT.  The 
 solution implements a number of uses cases including: registering devices, 
-sending telemetry from devices, creating rules and specifying alerts 
+sending telemetry from devices, creating rules and specifying alarms 
 for telemetry, sending commands to devices (e.g. reboot).  Remote Monitoring 
 can be deployed and run local or in the cloud.  When run local cloud access 
 must be available so as to allow access to required cloud resources, e.g. 
