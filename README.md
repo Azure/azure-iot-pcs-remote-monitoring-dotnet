@@ -6,7 +6,7 @@ Pre-configured solution for Remote Monitoring with Azure IoT
 ============================================================
 
 This is the "top level" repo for the Azure IoT PCS Remote Monitoring solution.  
-This repo contains submodules for each dotnet microservice and the React Web 
+This repository contains submodules for each dotnet microservice and the React Web 
 UI project.  It also contains instructions and scripts on how to get remote 
 monitoring running locally and in your Azure cloud subscription.  Each 
 microservice is built to run standalone - to view and use a microservice 
@@ -18,7 +18,7 @@ Overview
 Remote Monitoring is an end to end solution that showcases how a remote 
 monitoring IoT solution can be built and deployed for Azure IoT.  The 
 solution implements a number of uses cases including: registering devices, 
-sending telemetry from devices, creating rules and specifying rule alerts 
+sending telemetry from devices, creating rules and specifying alerts 
 for telemetry, sending commands to devices (e.g. reboot).  Remote Monitoring 
 can be deployed and run local or in the cloud.  When run local cloud access 
 must be available so as to allow access to required cloud resources, e.g. 
@@ -39,7 +39,7 @@ To run Remote Monitoring on your local machine:
 2. Install Docker: https://www.docker.com/.
 3. Create your IoT Hub either using the Azure Portal or by executing the IoT Hub 
 creation helper script in the cloned repo: 
-azure-iot-pcs-remote-monitoring-dotnet\scripts\iothub\create-hub.sh
+azure-iot-pcs-remote-monitoring-dotnet/scripts/iothub/create-hub.sh
 4. Create required environment variables:
 <todo - need a script for this>
 5. Run the local deployment script:
