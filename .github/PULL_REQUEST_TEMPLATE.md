@@ -6,10 +6,10 @@
 
 # Checklist:
 <!-- Please put an `x` (e.g. [x]) in all the boxes that apply: -->
+- [ ] All new and existing tests passed.
 - [ ] The code follows the code style and conventions of this project.
 - [ ] The change requires a change to the documentation.
 - [ ] I have updated the documentation accordingly.
-- [ ] All new and existing tests passed.
 
 # Description of the change
 <!-- Please provide enough information so others can review your pull request -->

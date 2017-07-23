@@ -1,70 +1,52 @@
+We'll be glad to accept patches and contributions to the project. There are
+just few guidelines we ask to follow.
+
 Contribution license Agreement
 ==============================
 
-If you want/plan to contribute, we ask you to sign a [CLA](https://cla.microsoft.com/)
-(Contribution license Agreement). A friendly bot will remind you about it when you submit
-a pull-request.
+If you want/plan to contribute, we ask you to sign a
+[CLA](https://cla.microsoft.com/) (Contribution license Agreement).
+A friendly bot will remind you about it when you submit a pull-request.
 
-Azure IoT Hub setup
-===================
+Submitting a contribution
+=========================
 
-At some point you will probably want to setup your Azure IoT Hub, for
-development and integration tests.
+It's generally best to start by
+[opening a new issue](https://help.github.com/articles/creating-an-issue)
+describing the work you intend to submit. Even for minor tasks, it's helpful
+to know what contributors are working on. Please mention in the initial issue
+that you are planning to work on it, so that it can be assigned to you.
 
-The project includes some Bash scripts to help you with this setup:
+Follow the usual GitHub flow process of
+[forking the project](https://help.github.com/articles/fork-a-repo),
+and setup a new branch to work in. Each group of changes should be done in
+separate branches, in order to ensure that a pull request only
+includes the changes related to one issue.
 
-* Create new IoT Hub: `./scripts/iothub/create-hub.sh`
-* List existing hubs: `./scripts/iothub/list-hubs.sh`
-* Show IoT Hub details (e.g. keys): `./scripts/iothub/show-hub.sh`
+Any significant change should almost always be accompanied by tests. Look at
+the existing tests to see the testing approach and style used.
 
-and in case you had multiple Azure subscriptions:
+Follow the project coding style, to ensure consistency and quick code reviews.
+For more information about the development workflow, have a look at
+[the development notes](DEVELOPMENT.md).
 
-* Show subscriptions list: `./scripts/iothub/list-subscriptions.sh`
-* Change current subscription: `./scripts/iothub/select-subscription.sh`
+Do your best to have clear commit messages for each change, in order to keep
+consistency throughout the project. Reference the issue number (#num). A good
+commit message serves at least these purposes:
+* Speed up the pull request review process
+* Help future developers to understand the purpose of your code
+* Help the maintainer write release notes
 
-Development
-===========
-
-... notes about code style ...
-... how to run tests locally ...
-... requirements, e.g. Azure sub, IoT Hub setup etc. ...
-... useful scripts included in the project ...
-
-Development setup
-=================
-
-## .NET setup
-
-1. Install [.NET Core](https://dotnet.github.io/)
-2. MacOS/Linux: Install [Mono 5.x](http://www.mono-project.com/download/alpha/)
-3. Some IDE options:
-   * [Visual Studio](https://www.visualstudio.com/)
-   * [IntelliJ Rider](https://www.jetbrains.com/rider)
-   * [Visual Studio Code](https://code.visualstudio.com/)
-   * [Visual Studio for Mac](https://www.visualstudio.com/vs/visual-studio-mac)
-
-Note: .NET Core support is work in progress, all .NET development is
-currently via .NET Framework on Windows and Mono on Linux/MacOS.
-
-We provide also a [Java version here](https://github.com/Azure/device-simulation-java).
-
-## Git setup
-
-The project includes a Git hook, to automate some checks before accepting a
-code change. You can run the tests manually, or let the CI platform to run
-the tests. We use the following Git hook to automatically run all the tests
-before sending code changes to GitHub and speed up the development workflow.
-
-Note: the hook requires [Mono 5](http://www.mono-project.com/download/beta).
-
-To setup the included hooks, open a Windows/Linux/MacOS console and execute:
-
+One-line messages are fine for small changes, but bigger changes should look
+like this:
 ```
-cd PROJECT-FOLDER
-cd scripts/git
-setup
+$ git commit -m "A brief summary of the commit
+>
+> A paragraph describing what changed and its impact."
 ```
 
-If at any point you want to remove the hook, simply delete the file installed
-under `.git/hooks`. You can also bypass the pre-commit hook using the
-`--no-verify` option.
+Finally, push the commits to your fork, submit a pull request, wait for the
+automated feedback from Travis CI, and follow the code review progress. The
+team might ask for some
+[changes](https://help.github.com/articles/committing-changes-to-a-pull-request-branch-created-from-a-fork)
+before merging the pull request.
