@@ -10,15 +10,15 @@
 [submodule "cli"]
 	path = cli
 	url = git@github.com:Azure/azure-remote-monitoring-cli
-[submodule "device-telemetry"]
-	path = device-telemetry
-	url = git@github.com:Azure/device-telemetry-dotnet.git
 [submodule "storage-adapter"]
 	path = storage-adapter
 	url = git@github.com:Azure/pcs-storage-adapter-dotnet.git
-[submodule "stream-analytics"]
-	path = stream-analytics
-	url = git@github.com:Azure/iot-stream-analytics-dotnet.git
+[submodule "telemetry"]
+	path = telemetry
+	url = git@github.com:Azure/device-telemetry-dotnet.git
+[submodule "telemetry-agent"]
+	path = telemetry-agent
+	url = git@github.com:Azure/telemetry-agent-dotnet.git
 [submodule "ui-config"]
 	path = ui-config
 	url = git@github.com:Azure/pcs-uiconfig-dotnet.git
