@@ -16,3 +16,9 @@
 [submodule "ui-config"]
 	path = ui-config
 	url = git@github.com:Azure/pcs-uiconfig-dotnet.git
+[submodule "telemetry"]
+	path = telemetry
+	url = git@github.com:Azure/device-telemetry-dotnet
+[submodule "telemetry-agent"]
+	path = telemetry-agent
+	url = git@github.com:Azure/telemetry-agent-dotnet
