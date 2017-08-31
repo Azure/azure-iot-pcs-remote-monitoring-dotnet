@@ -7,7 +7,7 @@ _dev/
 *.tar
 *.exe
 *.bck
-
+.vscode
 
 
 ### MacOS
