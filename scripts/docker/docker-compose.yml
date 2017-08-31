@@ -2,15 +2,30 @@
 # - install Docker Compose, see https://docs.docker.com/compose/install
 # - open a console and `cd` into the folder that contains this file
 # - run `docker-compose up`
+# - Open the browser at http://127.0.0.1:10080
+
+# TODO: remove port 80 in the reverse proxy and use 443
 
 version: "3"
 
 services:
+  reverseproxy:
+    image: azureiotpcs/remote-monitoring-nginx:latest
+    ports:
+      - "10080:80"
+    depends_on:
+      - webui
+      - auth
+      - iothubmanager
+      - devicesimulation
+      - telemetry
+      - uiconfig
+
   webui:
     image: azureiotpcs/remote-monitoring-webui:latest
     ports:
-      - "10080:80"
-      - "10443:443"
+      - "9080:80"
+      - "9443:443"
     depends_on:
       - auth
       - iothubmanager
@@ -78,6 +93,7 @@ services:
     depends_on:
       - telemetry
       - iothubmanager
+      - uiconfig
     ports:
       - "9023:9023"
     environment:
