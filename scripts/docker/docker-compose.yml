@@ -28,7 +28,7 @@ services:
       - uiconfig
 
   webui:
-    image: azureiotpcs/remote-monitoring-webui:latest
+    image: azureiotpcs/pcs-remote-monitoring-webui:latest
     ports:
       - "9080:80"
       - "9443:443"
