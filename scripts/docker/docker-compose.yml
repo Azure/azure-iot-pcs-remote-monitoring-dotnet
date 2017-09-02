@@ -1,0 +1,117 @@
+# Usage:
+# - install Docker Compose, see https://docs.docker.com/compose/install
+# - open a console and `cd` into the folder that contains this file
+# - note how the file references many environment variables, either set
+#   them in your system or edit this file adding the values here
+# - run `docker-compose up`
+# - open the browser at http://127.0.0.1:10080
+#
+# For more information see 
+# https://github.com/Azure/azure-iot-pcs-remote-monitoring-dotnet
+
+# TODO: remove port 80 in the reverse proxy and use 443
+# TODO: AAD settings
+
+version: "3"
+
+services:
+  reverseproxy:
+    image: azureiotpcs/remote-monitoring-nginx:latest
+    ports:
+      - "10080:80"
+    depends_on:
+      - webui
+      - auth
+      - iothubmanager
+      - devicesimulation
+      - telemetry
+      - uiconfig
+
+  webui:
+    image: azureiotpcs/pcs-remote-monitoring-webui:latest
+    ports:
+      - "9080:80"
+      - "9443:443"
+    depends_on:
+      - auth
+      - iothubmanager
+      - devicesimulation
+      - telemetry
+      - uiconfig
+
+  auth:
+    image: azureiotpcs/pcs-auth-dotnet
+    ports:
+      - "9001:9001"
+    environment:
+      - PCS_AUTH_AAD_GLOBAL_TENANTID=ToDo
+
+  iothubmanager:
+    image: azureiotpcs/iothub-manager-dotnet
+    ports:
+      - "9002:9002"
+    environment:
+      - PCS_IOTHUB_CONNSTRING
+
+  devicesimulation:
+    image: azureiotpcs/device-simulation-dotnet:latest
+    depends_on:
+      - storageadapter
+    ports:
+      - "9003:9003"
+    environment:
+      - PCS_IOTHUB_CONNSTRING
+      - PCS_STORAGEADAPTER_WEBSERVICE_URL=http://storageadapter:9022/v1
+    #volumes:
+    #  - ./sample-volume:/app/data:ro
+
+  telemetry:
+    # TODO Use .NET container
+    image: azureiotpcs/device-telemetry-java:latest
+    depends_on:
+      - storageadapter
+    ports:
+      - "9004:9004"
+    environment:
+      - PCS_DEVICETELEMETRY_DOCUMENTDB_CONNSTRING
+      - PCS_STORAGEADAPTER_WEBSERVICE_URL=http://storageadapter:9022/v1
+
+  uiconfig:
+    image: azureiotpcs/pcs-ui-config-dotnet:latest
+    depends_on:
+      - storageadapter
+    ports:
+      - "9005:9005"
+    environment:
+      - PCS_UICONFIG_WEBSERVICE_PORT=9005
+      - PCS_STORAGEADAPTER_WEBSERVICE_URL=http://storageadapter:9022/v1
+
+  storageadapter:
+    image: azureiotpcs/pcs-storage-adapter-dotnet:latest
+    ports:
+      - "9022:9022"
+    environment:
+      - PCS_STORAGEADAPTER_DOCUMENTDB_CONNSTRING
+
+  telemetryagent:
+    # TODO Use .NET container
+    image: azureiotpcs/iot-stream-analytics-java:latest
+    depends_on:
+      - telemetry
+      - iothubmanager
+      - uiconfig
+    ports:
+      - "9023:9023"
+    environment:
+      - PCS_STREAMANALYTICS_DOCUMENTDB_CONNSTRING
+      - PCS_DEVICETELEMETRY_WEBSERVICE_URL=http://telemetry:9004/v1
+      - PCS_UICONFIG_WEBSERVICE_URL=http://uiconfig:9005/v1
+      - PCS_IOTHUBMANAGER_WEBSERVICE_URL=http://iothubmanager:9002/v1
+      # For more info about IoT Hub react settings see
+      # https://github.com/Azure/toketi-iothubreact#iothub-configuration
+      - PCS_IOTHUBREACT_AZUREBLOB_ACCOUNT
+      - PCS_IOTHUBREACT_AZUREBLOB_KEY
+      - PCS_IOTHUBREACT_HUB_NAME
+      - PCS_IOTHUBREACT_HUB_ENDPOINT
+      - PCS_IOTHUBREACT_HUB_PARTITIONS
+      - PCS_IOTHUBREACT_ACCESS_CONNSTRING

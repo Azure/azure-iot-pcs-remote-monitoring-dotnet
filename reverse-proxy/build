@@ -1,0 +1,12 @@
+#!/usr/bin/env bash
+
+VERSION="0.1.0"
+
+# Note: use lowercase names for the Docker images
+DOCKER_IMAGE="azureiotpcs/remote-monitoring-nginx"
+
+set -e
+
+docker build --squash --compress --label "Tags=azure,iot,suite,solution,pcs" --tag "$DOCKER_IMAGE:$VERSION" --tag "$DOCKER_IMAGE:latest" .
+
+set +e
