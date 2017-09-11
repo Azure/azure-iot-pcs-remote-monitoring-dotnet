@@ -9,7 +9,7 @@
 	url = git@github.com:Azure/iothub-manager-dotnet.git
 [submodule "cli"]
 	path = cli
-	url = git@github.com:Azure/azure-remote-monitoring-cli
+	url = git@github.com:Azure/pcs-cli
 [submodule "storage-adapter"]
 	path = storage-adapter
 	url = git@github.com:Azure/pcs-storage-adapter-dotnet.git
