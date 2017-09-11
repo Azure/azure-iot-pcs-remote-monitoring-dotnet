@@ -7,6 +7,6 @@ WORKDIR /app
 
 # TODO: remove port 80
 EXPOSE 80 443
-VOLUME /app/config
+VOLUME ["/app/certs", "/app/config"]
 
 ENTRYPOINT ["/bin/bash", "/app/run.sh"]
