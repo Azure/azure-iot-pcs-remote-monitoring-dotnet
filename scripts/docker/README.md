@@ -4,7 +4,7 @@ How to launch the solution using Docker Compose
 1. Install Docker and Docker Compose
    1. https://docs.docker.com/engine/installation
    2. https://docs.docker.com/compose/install
-2. Set all the environment variables in the 
+2. Set all the environment variables in the
    docker-compose.yml file, directly in the file
    or in your system.
 3. Open a console and go into the folder containing
