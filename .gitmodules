@@ -22,3 +22,6 @@
 [submodule "config"]
 	path = config
 	url = git@github.com:Azure/pcs-config-dotnet.git
+[submodule "auth"]
+	path = auth
+	url = git@github.com:Azure/pcs-auth-dotnet.git
