@@ -13,12 +13,12 @@
 [submodule "storage-adapter"]
 	path = storage-adapter
 	url = git@github.com:Azure/pcs-storage-adapter-dotnet.git
-[submodule "ui-config"]
-	path = ui-config
-	url = git@github.com:Azure/pcs-uiconfig-dotnet.git
 [submodule "telemetry"]
 	path = telemetry
 	url = git@github.com:Azure/device-telemetry-dotnet
 [submodule "telemetry-agent"]
 	path = telemetry-agent
 	url = git@github.com:Azure/telemetry-agent-dotnet
+[submodule "config"]
+	path = config
+	url = git@github.com:Azure/pcs-config-dotnet.git
