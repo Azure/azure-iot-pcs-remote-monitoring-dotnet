@@ -4,7 +4,7 @@
 # - note how the file references many environment variables, either set
 #   them in your system or edit this file adding the values here
 # - run `docker-compose up`
-# - open the browser at http://127.0.0.1:10080
+# - open the browser at http://127.0.0.1:10443
 #
 # For more information see
 # https://github.com/Azure/azure-iot-pcs-remote-monitoring-dotnet
