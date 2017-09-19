@@ -25,7 +25,7 @@ services:
       - iothubmanager
       - devicesimulation
       - telemetry
-      - uiconfig
+      - config
 
   webui:
     image: azureiotpcs/pcs-remote-monitoring-webui:latest
@@ -37,7 +37,7 @@ services:
       - iothubmanager
       - devicesimulation
       - telemetry
-      - uiconfig
+      - config
 
   auth:
     image: azureiotpcs/pcs-auth-dotnet
@@ -67,23 +67,23 @@ services:
 
   telemetry:
     # TODO Use .NET container
-    image: azureiotpcs/device-telemetry-java:latest
+    image: azureiotpcs/telemetry-java:latest
     depends_on:
       - storageadapter
     ports:
       - "9004:9004"
     environment:
-      - PCS_DEVICETELEMETRY_DOCUMENTDB_CONNSTRING
+      - PCS_TELEMETRY_DOCUMENTDB_CONNSTRING
       - PCS_STORAGEADAPTER_WEBSERVICE_URL=http://storageadapter:9022/v1
 
-  uiconfig:
-    image: azureiotpcs/pcs-ui-config-dotnet:latest
+  config:
+    image: azureiotpcs/pcs-config-dotnet:latest
     depends_on:
       - storageadapter
     ports:
       - "9005:9005"
     environment:
-      - PCS_UICONFIG_WEBSERVICE_PORT=9005
+      - PCS_CONFIG_WEBSERVICE_PORT=9005
       - PCS_STORAGEADAPTER_WEBSERVICE_URL=http://storageadapter:9022/v1
 
   storageadapter:
@@ -95,17 +95,17 @@ services:
 
   telemetryagent:
     # TODO Use .NET container
-    image: azureiotpcs/iot-stream-analytics-java:latest
+    image: azureiotpcs/telemetry-agent-java:latest
     depends_on:
       - telemetry
       - iothubmanager
-      - uiconfig
+      - config
     ports:
       - "9023:9023"
     environment:
-      - PCS_STREAMANALYTICS_DOCUMENTDB_CONNSTRING
-      - PCS_DEVICETELEMETRY_WEBSERVICE_URL=http://telemetry:9004/v1
-      - PCS_UICONFIG_WEBSERVICE_URL=http://uiconfig:9005/v1
+      - PCS_TELEMETRYAGENT_DOCUMENTDB_CONNSTRING
+      - PCS_TELEMETRY_WEBSERVICE_URL=http://telemetry:9004/v1
+      - PCS_CONFIG_WEBSERVICE_URL=http://config:9005/v1
       - PCS_IOTHUBMANAGER_WEBSERVICE_URL=http://iothubmanager:9002/v1
       # For more info about IoT Hub react settings see
       # https://github.com/Azure/toketi-iothubreact#iothub-configuration
