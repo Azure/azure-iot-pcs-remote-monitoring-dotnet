@@ -15,7 +15,7 @@
 	url = git@github.com:Azure/pcs-storage-adapter-dotnet.git
 [submodule "telemetry"]
 	path = telemetry
-	url = git@github.com:Azure/device-telemetry-dotnet
+	url = git@github.com:Azure/telemetry-dotnet
 [submodule "telemetry-agent"]
 	path = telemetry-agent
 	url = git@github.com:Azure/telemetry-agent-dotnet
