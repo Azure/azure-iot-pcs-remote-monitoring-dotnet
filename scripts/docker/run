@@ -1,0 +1,11 @@
+echo "Starting at https://localhost:10443"
+echo
+echo "Note:"
+echo " * When running locally, the service might run with an invalid SSL cert"
+echo " * The service requires some configuration files hosted under /app"
+echo "   Edit docker-compose.yml to use a different path"
+echo
+
+read -t 10 -p "Press ENTER to start or wait ten seconds for the services to start..."
+
+docker-compose up
