@@ -5,7 +5,7 @@ Contribution License Agreement
 ==============================
 
 If you want/plan to contribute, we ask you to sign a
-[CLA](https://cla.microsoft.com/) (Contribution license Agreement).
+[CLA](https://cla.microsoft.com/) (Contribution License Agreement).
 A friendly bot will remind you about it when you submit a pull-request.
 
 This project has adopted the
