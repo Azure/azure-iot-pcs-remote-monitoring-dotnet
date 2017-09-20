@@ -1,12 +1,19 @@
 We'll be glad to accept patches and contributions to the project. There are
 just few guidelines we ask to follow.
 
-Contribution license Agreement
+Contribution License Agreement
 ==============================
 
 If you want/plan to contribute, we ask you to sign a
-[CLA](https://cla.microsoft.com/) (Contribution license Agreement).
+[CLA](https://cla.microsoft.com/) (Contribution License Agreement).
 A friendly bot will remind you about it when you submit a pull-request.
+
+This project has adopted the
+[Microsoft Open Source Code of Conduct](https://opensource.microsoft.com/codeofconduct).
+For more information see the
+[Code of Conduct FAQ](https://opensource.microsoft.com/codeofconduct/faq)
+or contact [opencode@microsoft.com](mailto:opencode@microsoft.com) with
+any additional questions or comments.
 
 Submitting a contribution
 =========================
