@@ -68,5 +68,5 @@ Other documents
 [build-url]: https://travis-ci.org/Azure/azure-iot-pcs-remote-monitoring-dotnet
 [issues-badge]: https://img.shields.io/github/issues/azure/azure-iot-pcs-remote-monitoring-dotnet.svg
 [issues-url]: https://github.com/azure/azure-iot-pcs-remote-monitoring-dotnet/issues
-[gitter-badge]: https://img.shields.io/gitter/room/azure/iot-pcs.js.svg
-[gitter-url]: https://gitter.im/azure/iot-pcs
+[gitter-badge]: https://img.shields.io/gitter/room/azure/iot-solutions.js.svg
+[gitter-url]: https://gitter.im/Azure/iot-solutions
