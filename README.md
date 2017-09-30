@@ -5,6 +5,13 @@
 Pre-configured solution for Remote Monitoring with Azure IoT
 ============================================================
 
+This solution is currently in preview. This is an end to end solution that 
+offers a rich set of IoT features, but there are known bugs (please see the 
+Issue lists!) and there will be a number of new features coming up as we move 
+towards General Availability.  Please see our Issues list in this repo (and in any
+submodules) and feel free to add or comment with what you think we should 
+work on.  Please also feel free to do the work and submit PRs :).
+
 This is the "top level" repo for the Azure IoT PCS Remote Monitoring solution.
 This repository contains submodules for each .NET microservice and the
 React Web UI project.  It also contains instructions and scripts on how to get
