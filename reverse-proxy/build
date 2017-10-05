@@ -1,12 +1,10 @@
-#!/usr/bin/env bash
-
-VERSION="0.1.4"
+#!/usr/bin/env bash -e
 
 # Note: use lowercase names for the Docker images
 DOCKER_IMAGE="azureiotpcs/remote-monitoring-nginx"
 
-set -e
+DOCKER_LABEL2="Commit=$(git log --pretty=format:'%H' -n 1)"
+DOCKER_LABEL3="Date=$(/usr/bin/env date +%Y-%m-%dT%H:%M:%S)"
 
-docker build --squash --compress --label "Tags=Azure,IoT,IoT Suite,IoT Solutions" --tag "$DOCKER_IMAGE:$VERSION" --tag "$DOCKER_IMAGE:latest" .
-
-set +e
+docker build --squash --compress --tag "$DOCKER_IMAGE:testing" \
+  --label "$DOCKER_LABEL2" --label "$DOCKER_LABEL3" .

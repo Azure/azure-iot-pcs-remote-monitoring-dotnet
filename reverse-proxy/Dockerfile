@@ -2,6 +2,8 @@ FROM nginx:1.13
 
 MAINTAINER Devis Lucato (https://github.com/dluc)
 
+LABEL Tags="Azure,IoT,Solutions,Proxy,nginx"
+
 COPY ./content/ /app
 WORKDIR /app
 
