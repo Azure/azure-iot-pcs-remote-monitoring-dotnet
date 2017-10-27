@@ -10,10 +10,38 @@ Remote Monitoring preconfigured solution with Azure IoT
 
 Overview
 ========
->  This solution is currently in preview. The preview offers many features
-but there are known bugs. You can refer to our [Issues List](issues) in
-this repo (and in any submodules) to see known requests and issues. Feel
-free to submit new issues (and submit PRs for fixes if you'd like).
+> This solution is currently in preview (learn more from our
+> [blog announcement](https://azure.microsoft.com/en-in/blog/the-next-generation-of-azure-iot-suite-accelerates-iot-solutions/)). 
+> The remote monitoring solution incorporates learnings from customers
+> and partners, and is a fully operational IoT solution right out of the
+> box. 
+>
+> Plus, a lot of great functionality will be coming in the next few 
+> months, including:
+>
+> * Extended method support for your simulated devices to help demo and test additional scenarios
+> * Additional ‘Getting Started’ and ‘Customization’ documentation in our GitHub repositories 
+> * Easier retrieval of your physical device connection string in the web solution
+> * Performance enhancements
+> * UX improvements
+> * Expanded browser compatibility (Internet Explorer and others)
+>
+> We will also be fixing known bugs. You can refer to our
+> [Issues List](https://github.com/Azure/azure-iot-pcs-remote-monitoring-dotnet/blob/master/issues)
+> in this repo (and in any submodules) to see known requests and issues. 
+>
+> There is also a Java version of this repo available [here](https://github.com/Azure/azure-iot-pcs-remote-monitoring-java)
+
+The preview offers many features but there are known bugs. You can refer to our
+[Issues List](issues) in this repo (and in any submodules) to see known requests 
+and issues. If something doesn’t work as you would expect, feel free to submit new
+[issues](https://github.com/Azure/azure-iot-pcs-remote-monitoring-dotnet/issues). 
+We also love PRs for fixes too!
+
+We have a [User Voice](https://feedback.azure.com/forums/321918-azure-iot)
+channel to receive suggestions for features and future supported scenarios.
+We encourage you to browse what others are suggesting, vote for your favorites,
+and even enter suggestions of your own.
 
 Remote monitoring helps you get better visibility into your devices, assets, and
 sensors wherever they happen to be located. You can collect and analyze real-time
@@ -32,8 +60,6 @@ for a detailed overview of features and use cases.
 To get started you can follow along with the [Getting Started](#getting-started)
 for a command line deployment. You can also deploy using the web interface
 at https://azureiotsuite.com.
-
-> There is also a Java version of this repo available [here](https://github.com/Azure/azure-iot-pcs-remote-monitoring-java)
 
 Getting Started
 ===============
@@ -176,8 +202,9 @@ How-to and Troubleshooting Resources
 
 Feedback
 ========
-If you have feedback, feature requests, or find a problem, you can create
+* If you have feedback, feature requests, or find a problem, you can create
 a new issue in the [GitHub Issues](issues)
+* We also have a [User Voice](https://feedback.azure.com/forums/321918-azure-iot) channel to receive suggestions for features and future supported scenarios.
 
 Contributing
 ============
