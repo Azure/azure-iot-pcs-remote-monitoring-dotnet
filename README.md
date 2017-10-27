@@ -21,7 +21,7 @@ Overview
 >
 > * Extended method support for your simulated devices to help demo and test additional scenarios
 > * Additional ‘Getting Started’ and ‘Customization’ documentation in our GitHub repositories 
-> * Easier retrieval of your physical’s device connection string in the web solution
+> * Easier retrieval of your physical device connection string in the web solution
 > * Performance enhancements
 > * UX improvements
 > * Expanded browser compatibility (Internet Explorer and others)
@@ -39,7 +39,7 @@ We encourage you to browse what others are suggesting, vote for your favorites,
 and even enter suggestions of your own.
 
 
-This solution is currently in preview. The preview offers many features
+The preview offers many features
 but there are known bugs. You can refer to our [Issues List](issues) in
 this repo (and in any submodules) to see known requests and issues. Feel
 free to submit new issues (and submit PRs for fixes if you'd like).
