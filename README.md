@@ -42,7 +42,7 @@ and even enter suggestions of your own.
 The preview offers many features
 but there are known bugs. You can refer to our [Issues List](issues) in
 this repo (and in any submodules) to see known requests and issues. Feel
-free to submit new issues (and submit PRs for fixes if you'd like).
+free to submit new issues (and submit PRs for fixes!).
 
 Remote monitoring helps you get better visibility into your devices, assets, and
 sensors wherever they happen to be located. You can collect and analyze real-time
