@@ -32,17 +32,16 @@ Overview
 >
 > There is also a Java version of this repo available [here](https://github.com/Azure/azure-iot-pcs-remote-monitoring-java)
 
-If something doesn’t work as you would expect, feel free to submit new [issues](https://github.com/Azure/azure-iot-pcs-remote-monitoring-dotnet/issues). We also love PRs for fixes too!
+The preview offers many features but there are known bugs. You can refer to our
+[Issues List](issues) in this repo (and in any submodules) to see known requests 
+and issues. If something doesn’t work as you would expect, feel free to submit new
+[issues](https://github.com/Azure/azure-iot-pcs-remote-monitoring-dotnet/issues). 
+We also love PRs for fixes too!
+
 We have a [User Voice](https://feedback.azure.com/forums/321918-azure-iot)
 channel to receive suggestions for features and future supported scenarios.
 We encourage you to browse what others are suggesting, vote for your favorites,
 and even enter suggestions of your own.
-
-
-The preview offers many features
-but there are known bugs. You can refer to our [Issues List](issues) in
-this repo (and in any submodules) to see known requests and issues. Feel
-free to submit new issues (and submit PRs for fixes!).
 
 Remote monitoring helps you get better visibility into your devices, assets, and
 sensors wherever they happen to be located. You can collect and analyze real-time
