@@ -19,7 +19,7 @@ Overview
 > Plus, a lot of great functionality will be coming in the next few 
 > months, including:
 >
-> * Extended method support for your simulated devices to help demo and test additional scenarios. Details about the Contoso sample devices and rules can be found in the documentation [here](https://docs.microsoft.com/en-us/azure/iot-suite/iot-suite-remote-monitoring-explore). Currently the simulated Chiller device is fully implemented, the other devices detailed will be built and validated in the coming months. If you’d like to add or extend the simulated devices yourself you can start with this [tutorial]( https://review.docs.microsoft.com/en-us/azure/iot-suite/iot-suite-remote-monitoring-test) as reference . 
+> * Extended method support for your simulated devices to help demo and test additional scenarios. Details about the Contoso sample devices and rules can be found in the documentation [here](https://docs.microsoft.com/en-us/azure/iot-suite/iot-suite-remote-monitoring-explore). Currently the simulated Chiller device is fully implemented, the other device methods detailed will be built and validated in the coming months. If you’d like to add or extend the simulated devices yourself you can start with this [tutorial]( https://review.docs.microsoft.com/en-us/azure/iot-suite/iot-suite-remote-monitoring-test) as reference . 
 > * Additional ‘Getting Started’ and ‘Customization’ documentation in our GitHub repositories 
 > * Easier retrieval of your physical device connection string in the web solution
 > * Performance enhancements
