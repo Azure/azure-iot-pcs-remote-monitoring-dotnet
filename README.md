@@ -107,7 +107,7 @@ Common Scenarios
 
 ## All done? Connect a device!
 By default, the solution uses simulated devices. You can start adding your
-own devices with the instructions here: [Connect a physical device](https://github.com/Azure/azure-iot-pcs-remote-monitoring-dotnet/wiki/Developer-Reference-Guide#connect-a-physical-device)
+own devices with the instructions here: [Connect a physical device](https://docs.microsoft.com/en-us/azure/iot-suite/iot-suite-connecting-devices-linux)
 
 ## Stopping Simulated Devices
 Once you are ready, you can stop the default simulated devices by calling the simulation endpoint with the instructions [here](https://github.com/Azure/device-simulation-dotnet/wiki/%5BAPI-Specifications%5D-Simulations#stop-simulation).
