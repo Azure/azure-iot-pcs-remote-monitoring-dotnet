@@ -16,7 +16,7 @@
 # Expected behavior <!-- The behavior you're expecting -->
 ...
 
-# Current behavior <!-- The actual behavior observed --
+# Current behavior <!-- The actual behavior observed -->
 ...
 
 # Known workarounds <!-- If any, please share here -->
