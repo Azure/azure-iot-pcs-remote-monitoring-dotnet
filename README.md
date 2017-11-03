@@ -213,7 +213,7 @@ Refer to our [contribution guidelines](CONTRIBUTING.md)
 License
 =======
 Copyright (c) Microsoft Corporation. All rights reserved.
-Licensed under the [MIT](LICENSE.txt) License.
+Licensed under the [MIT](LICENSE) License.
 
 [build-badge]: https://img.shields.io/travis/Azure/azure-iot-pcs-remote-monitoring-dotnet.svg
 [build-url]: https://travis-ci.org/Azure/azure-iot-pcs-remote-monitoring-dotnet
