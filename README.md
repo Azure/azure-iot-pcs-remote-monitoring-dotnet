@@ -144,15 +144,14 @@ responsible for deployment, scaling, and management of the application.
 Creating a Standard solution will result in the following Azure services being
 provisioned into your Azure subscription at cost:
 
-| Count | Resource                       | Type         | Used For |
-|-------|--------------------------------|--------------|----------|
-| 1 | [Azure Active Directory Application][azure-active-directory] | | User Authentication |
-| 1 | [Azure Container Service][container-service] | | [Kubernetes](https://kubernetes.io/) orchestrator |
-| 4 | [Linux Virtual Machines][virtual-machines] | Standard D1 V2 (1 core, 3.5GB memory) | 1 master VM & 3 agents for hosting microservices with redundancy |
-| 1 | [Azure IoT Hub][iot-hub] | S1 – Basic tier | Device management and communication |
-| 1 | [Azure Cosmos DB][cosmos-db] | Standard | Storing configuration data, and device telemetry like rules, alarms, and messages |
-| 5 | [Azure Storage Accounts][storage-account] | Standard GRS | 4 for VM storage, and 1 for the Stream Analytics checkpoints |
-| 1 | [Web Application][web-application] | | Hosting front-end web application |
+| Count | Resource                                     | SKU / Size      | Used For |
+|-------|----------------------------------------------|-----------------|----------|
+| 4     | [Linux Virtual Machines][virtual-machines]   | Standard D2 V2  | 1 master and 3 agents for hosting microservices with redundancy |
+| 1     | [Azure Container Service][container-service] |                 | [Kubernetes](https://kubernetes.io) orchestrator |
+| 1     | [Azure IoT Hub][iot-hub]                     | S1 – Basic tier | Device management, command and control |
+| 1     | [Azure Cosmos DB][cosmos-db]                 | Standard        | Storing configuration data, and device telemetry like rules, alarms, and messages |
+| 5     | [Azure Storage Accounts][storage-account]    | Standard        | 4 for VM storage, and 1 for the Stream Analytics checkpoints |
+| 1     | [App Service][web-application]               | S1 Standard     | Application gateway over SSL |
 
 > Pricing information for these services can be found
 [here](https://azure.microsoft.com/pricing). Usage amounts and billing details
@@ -203,12 +202,12 @@ How-to and Troubleshooting Resources
 Feedback
 ========
 * If you have feedback, feature requests, or find a problem, you can create
-a new issue in the [GitHub Issues](issues)
+  a new issue in the [GitHub Issues](issues)
 * We also have a [User Voice](https://feedback.azure.com/forums/321918-azure-iot) channel to receive suggestions for features and future supported scenarios.
 
 Contributing
 ============
-Refer to our [contribution guidelines](CONTRIBUTING.md)
+Refer to our [contribution guidelines](docs/CONTRIBUTING.md)
 
 License
 =======
