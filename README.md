@@ -27,7 +27,7 @@ Overview
 > * Expanded browser compatibility (Internet Explorer and others)
 >
 > We will also be fixing known bugs. You can refer to our
-> [Issues List](https://github.com/Azure/azure-iot-pcs-remote-monitoring-dotnet/blob/master/issues)
+> [Issues List](https://github.com/Azure/azure-iot-pcs-remote-monitoring-dotnet/issues)
 > in this repo (and in any submodules) to see known requests and issues. 
 >
 > There is also a Java version of this repo available [here](https://github.com/Azure/azure-iot-pcs-remote-monitoring-java)
