@@ -1,0 +1,146 @@
+# This is the docker-compose script for local development.
+# For the latest version of the docker images see:
+# https://github.com/Azure/pcs-cli/blob/master/remotemonitoring/single-vm/docker-compose.dotnet.yml
+#
+# Usage:
+# - install Docker Compose, see https://docs.docker.com/compose/install
+# - open a console and `cd` into the folder that contains this file
+# - note how the file references many environment variables, either set
+#   them in the .env file or edit this file adding the values here
+# - run `docker-compose up`
+# - open the browser at http://127.0.0.1:10443
+#
+# For more information see
+# https://github.com/Azure/azure-iot-pcs-remote-monitoring-dotnet
+
+version: "3"
+
+services:
+  reverseproxy:
+    image: azureiotpcs/remote-monitoring-nginx:1.0.0-preview.3
+    ports:
+      - "80:80"
+      - "443:443"
+    depends_on:
+      - webui
+      - auth
+      - iothubmanager
+      - devicesimulation
+      - telemetry
+      - config
+    volumes:
+      - ./:/app/certs:ro
+
+  webui:
+    image: azureiotpcs/pcs-remote-monitoring-webui:1.0.0-preview.3
+    depends_on:
+      - auth
+      - iothubmanager
+      - devicesimulation
+      - telemetry
+      - config
+# NOTE: Volumes disabled for local development, uncomment if enabling auth
+#    volumes:
+#      - /app/webui-config.js:/app/build/webui-config.js:ro
+
+  auth:
+    image: azureiotpcs/pcs-auth-dotnet:1.0.0-preview.3
+    environment:
+      - PCS_AUTH_ISSUER
+      - PCS_AUTH_AUDIENCE
+      - PCS_AUTH_REQUIRED
+      - PCS_CORS_WHITELIST
+      - PCS_APPLICATION_SECRET
+
+  iothubmanager:
+    image: azureiotpcs/iothub-manager-dotnet:1.0.0-preview.3
+    environment:
+      - PCS_IOTHUB_CONNSTRING
+      - PCS_CONFIG_WEBSERVICE_URL=http://config:9005/v1
+      - PCS_AUTH_ISSUER
+      - PCS_AUTH_AUDIENCE
+      - PCS_AUTH_REQUIRED
+      - PCS_CORS_WHITELIST
+      - PCS_APPLICATION_SECRET
+
+  devicesimulation:
+    image: azureiotpcs/device-simulation-dotnet:1.0.0-preview.3
+    depends_on:
+      - storageadapter
+    environment:
+      - PCS_IOTHUB_CONNSTRING
+      - PCS_STORAGEADAPTER_WEBSERVICE_URL=http://storageadapter:9022/v1
+      - PCS_AUTH_ISSUER
+      - PCS_AUTH_AUDIENCE
+      - PCS_AUTH_REQUIRED
+      - PCS_CORS_WHITELIST
+      - PCS_APPLICATION_SECRET
+    # How one could mount custom device models
+    #volumes:
+    #  - ./my-device-models:/app/data:ro
+
+  telemetry:
+    image: azureiotpcs/telemetry-dotnet:1.0.0-preview.3
+    depends_on:
+      - storageadapter
+    environment:
+      - PCS_TELEMETRY_DOCUMENTDB_CONNSTRING
+      - PCS_STORAGEADAPTER_WEBSERVICE_URL=http://storageadapter:9022/v1
+      - PCS_AUTH_ISSUER
+      - PCS_AUTH_AUDIENCE
+      - PCS_AUTH_REQUIRED
+      - PCS_CORS_WHITELIST
+      - PCS_APPLICATION_SECRET
+
+  config:
+    image: azureiotpcs/pcs-config-dotnet:1.0.0-preview.3
+    depends_on:
+      - storageadapter
+      - devicesimulation
+      - telemetry
+      - iothubmanager
+    environment:
+      - PCS_STORAGEADAPTER_WEBSERVICE_URL=http://storageadapter:9022/v1
+      - PCS_DEVICESIMULATION_WEBSERVICE_URL=http://devicesimulation:9003/v1
+      - PCS_TELEMETRY_WEBSERVICE_URL=http://telemetry:9004/v1
+      - PCS_IOTHUBMANAGER_WEBSERVICE_URL=http://iothubmanager:9002/v1
+      - PCS_BINGMAP_KEY
+      - PCS_AUTH_ISSUER
+      - PCS_AUTH_AUDIENCE
+      - PCS_AUTH_REQUIRED
+      - PCS_CORS_WHITELIST
+      - PCS_APPLICATION_SECRET
+
+  storageadapter:
+    image: azureiotpcs/pcs-storage-adapter-dotnet:1.0.0-preview.3
+    environment:
+      - PCS_STORAGEADAPTER_DOCUMENTDB_CONNSTRING
+      - PCS_AUTH_ISSUER
+      - PCS_AUTH_AUDIENCE
+      - PCS_AUTH_REQUIRED
+      - PCS_CORS_WHITELIST
+      - PCS_APPLICATION_SECRET
+
+  telemetryagent:
+    image: azureiotpcs/telemetry-agent-dotnet:1.0.0-preview.3
+    depends_on:
+      - telemetry
+      - iothubmanager
+      - config
+    environment:
+      - PCS_TELEMETRYAGENT_DOCUMENTDB_CONNSTRING
+      - PCS_TELEMETRY_WEBSERVICE_URL=http://telemetry:9004/v1
+      - PCS_CONFIG_WEBSERVICE_URL=http://config:9005/v1
+      - PCS_IOTHUBMANAGER_WEBSERVICE_URL=http://iothubmanager:9002/v1
+      - PCS_IOTHUBREACT_AZUREBLOB_ACCOUNT
+      - PCS_IOTHUBREACT_AZUREBLOB_KEY
+      - PCS_IOTHUBREACT_AZUREBLOB_ENDPOINT_SUFFIX
+      - PCS_IOTHUBREACT_HUB_NAME
+      - PCS_IOTHUBREACT_HUB_ENDPOINT
+      - PCS_IOTHUBREACT_HUB_PARTITIONS
+      - PCS_IOTHUBREACT_ACCESS_CONNSTRING
+      - PCS_AUTH_ISSUER
+      - PCS_AUTH_AUDIENCE
+      - PCS_AUTH_REQUIRED
+      - PCS_CORS_WHITELIST
+      - PCS_APPLICATION_SECRET
