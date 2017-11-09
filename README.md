@@ -34,7 +34,7 @@ Overview
 > * Expanded browser compatibility (Internet Explorer and others)
 >
 > We will also be fixing known bugs. You can refer to our
-> [Issues List](https://github.com/Azure/azure-iot-pcs-remote-monitoring-dotnet/blob/master/issues)
+> [Issues List](https://github.com/Azure/azure-iot-pcs-remote-monitoring-dotnet/issues)
 > in this repo (and in any submodules) to see known requests and issues. 
 >
 > There is also a Java version of this repo available [here](https://github.com/Azure/azure-iot-pcs-remote-monitoring-java)
@@ -114,7 +114,7 @@ Common Scenarios
 
 ## All done? Connect a device!
 By default, the solution uses simulated devices. You can start adding your
-own devices with the instructions here: [Connect a physical device](https://github.com/Azure/azure-iot-pcs-remote-monitoring-dotnet/wiki/Developer-Reference-Guide#connect-a-physical-device)
+own devices with the instructions here: [Connect a physical device](https://docs.microsoft.com/en-us/azure/iot-suite/iot-suite-connecting-devices-linux)
 
 ## Stopping Simulated Devices
 Once you are ready, you can stop the default simulated devices by calling the simulation endpoint with the instructions [here](https://github.com/Azure/device-simulation-dotnet/wiki/%5BAPI-Specifications%5D-Simulations#stop-simulation).
@@ -134,12 +134,11 @@ provisioned into your Azure subscription at cost:
 
 | Count | Resource                       | Type         | Used For |
 |-------|--------------------------------|--------------|----------|
-| 1 | [Azure Active Directory Application][azure-active-directory] | | User Authentication |
-| 1 | [Linux Virtual Machine][virtual-machines] | Standard D1 V2 (1 core, 3.5GB memory) | Hosting microservices |
-| 1 | [Azure IoT Hub][iot-hub] | S1 – Basic tier | Device management and communication |
-| 1 | [Azure Cosmos DB][cosmos-db] | Standard | Storing configuration data, and device telemetry like rules, alarms, and messages |
-| 1 | [Azure Storage Account][storage-account] | Standard GRS | Storage for VM and Stream Analytics checkpoints |
-| 1 | [Web Application][web-application] | | Hosting front-end web application |
+| 1     | [Linux Virtual Machine][virtual-machines] | Standard D1 V2  | Hosting microservices |
+| 1     | [Azure IoT Hub][iot-hub]                  | S1 – Basic tier | Device management and communication |
+| 1     | [Azure Cosmos DB][cosmos-db]              | Standard        | Storing configuration data, and device telemetry like rules, alarms, and messages |
+| 1     | [Azure Storage Account][storage-account]  | Standard        | Storage for VM and streaming checkpoints |
+| 1     | [Web Application][web-application]        |                 | Hosting front-end web application |
 
 ## Standard
 The standard deployment is a production-ready deployment a developer can
@@ -151,15 +150,14 @@ responsible for deployment, scaling, and management of the application.
 Creating a Standard solution will result in the following Azure services being
 provisioned into your Azure subscription at cost:
 
-| Count | Resource                       | Type         | Used For |
-|-------|--------------------------------|--------------|----------|
-| 1 | [Azure Active Directory Application][azure-active-directory] | | User Authentication |
-| 1 | [Azure Container Service][container-service] | | [Kubernetes](https://kubernetes.io/) orchestrator |
-| 4 | [Linux Virtual Machines][virtual-machines] | Standard D1 V2 (1 core, 3.5GB memory) | 1 master VM & 3 agents for hosting microservices with redundancy |
-| 1 | [Azure IoT Hub][iot-hub] | S1 – Basic tier | Device management and communication |
-| 1 | [Azure Cosmos DB][cosmos-db] | Standard | Storing configuration data, and device telemetry like rules, alarms, and messages |
-| 5 | [Azure Storage Accounts][storage-account] | Standard GRS | 4 for VM storage, and 1 for the Stream Analytics checkpoints |
-| 1 | [Web Application][web-application] | | Hosting front-end web application |
+| Count | Resource                                     | SKU / Size      | Used For |
+|-------|----------------------------------------------|-----------------|----------|
+| 4     | [Linux Virtual Machines][virtual-machines]   | Standard D2 V2  | 1 master and 3 agents for hosting microservices with redundancy |
+| 1     | [Azure Container Service][container-service] |                 | [Kubernetes](https://kubernetes.io) orchestrator |
+| 1     | [Azure IoT Hub][iot-hub]                     | S1 – Basic tier | Device management, command and control |
+| 1     | [Azure Cosmos DB][cosmos-db]                 | Standard        | Storing configuration data, and device telemetry like rules, alarms, and messages |
+| 5     | [Azure Storage Accounts][storage-account]    | Standard        | 4 for VM storage, and 1 for the streaming checkpoints |
+| 1     | [App Service][web-application]               | S1 Standard     | Application gateway over SSL |
 
 > Pricing information for these services can be found
 [here](https://azure.microsoft.com/pricing). Usage amounts and billing details
@@ -210,17 +208,17 @@ How-to and Troubleshooting Resources
 Feedback
 ========
 * If you have feedback, feature requests, or find a problem, you can create
-a new issue in the [GitHub Issues](issues)
+  a new issue in the [GitHub Issues](issues)
 * We also have a [User Voice](https://feedback.azure.com/forums/321918-azure-iot) channel to receive suggestions for features and future supported scenarios.
 
 Contributing
 ============
-Refer to our [contribution guidelines](CONTRIBUTING.md)
+Refer to our [contribution guidelines](docs/CONTRIBUTING.md)
 
 License
 =======
 Copyright (c) Microsoft Corporation. All rights reserved.
-Licensed under the [MIT](LICENSE.txt) License.
+Licensed under the [MIT](LICENSE) License.
 
 [build-badge]: https://img.shields.io/travis/Azure/azure-iot-pcs-remote-monitoring-dotnet.svg
 [build-url]: https://travis-ci.org/Azure/azure-iot-pcs-remote-monitoring-dotnet
