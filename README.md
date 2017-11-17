@@ -75,7 +75,7 @@ Getting Started
     ```
 1. Set up command line interface for deployments
     ```
-    cd pcs-cli
+    cd cli
     npm install
     npm start
     npm link
