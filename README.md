@@ -73,9 +73,23 @@ Getting Started
     ```
     git clone --recursive https://github.com/Azure/azure-iot-pcs-remote-monitoring-dotnet.git
     ```
+    If you cloned the repo without the `--recursive` flag and it's your first time updating the submodules, you can use
+    `git submodule update --init --recursive`. More information on submodules [here](https://git-scm.com/book/en/v2/Git-Tools-Submodules). 
 1. Set up command line interface for deployments
+
+
+    Mac/Linux
+    
     ```
-    cd cli
+    cd azure-iot-pcs-remote-monitoring-dotnet/cli
+    npm install
+    npm start
+    npm link
+    ```
+    Windows
+    
+    ```
+    cd azure-iot-pcs-remote-monitoring-dotnet\cli
     npm install
     npm start
     npm link
