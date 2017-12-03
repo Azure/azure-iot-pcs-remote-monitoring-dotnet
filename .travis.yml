@@ -1,7 +1,6 @@
 language: csharp
 mono: none
-dotnet: 1.0.1
-dist: trusty
+dotnet: 2.0.3
 sudo: false
 cache:
   directories:
