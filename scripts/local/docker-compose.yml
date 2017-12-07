@@ -30,7 +30,7 @@ services:
       - config
     volumes:
     # Required volume for app certs
-      - ./:/app/certs:ro
+      - ./app/certs:/app/certs:ro
 
   webui:
     image: azureiotpcs/pcs-remote-monitoring-webui:testing
