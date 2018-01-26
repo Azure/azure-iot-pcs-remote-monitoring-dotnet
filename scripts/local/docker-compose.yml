@@ -17,7 +17,8 @@ version: "3"
 
 services:
   reverseproxy:
-    image: azureiotpcs/remote-monitoring-nginx:testing
+    # Temporarily use the "testing-no-ssl" tag until the PR is merged and the new proxy docker image is published
+    image: azureiotpcs/remote-monitoring-nginx:testing-no-ssl
     ports:
       - "80:80"
       - "443:443"
@@ -29,8 +30,7 @@ services:
       - telemetry
       - config
     volumes:
-    # Required volume for app certs
-      - ./app/certs:/app/certs:ro
+      - ./nginx-no-ssl.conf:/app/config/nginx.conf:ro
 
   webui:
     image: azureiotpcs/pcs-remote-monitoring-webui:testing
