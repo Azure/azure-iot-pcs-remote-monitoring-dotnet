@@ -3,4 +3,4 @@ set -e
 set -x
 
 mkdir -p /app/logs
-nginx -c /app/nginx.conf
+nginx -c /app/config/nginx.conf
