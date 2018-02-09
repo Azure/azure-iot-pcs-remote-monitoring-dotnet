@@ -19,8 +19,7 @@ services:
   reverseproxy:
     image: azureiotpcs/remote-monitoring-nginx:testing
     ports:
-      - "80:80"
-      - "443:443"
+      - "8080:80"
     depends_on:
       - webui
       - auth
@@ -29,8 +28,7 @@ services:
       - telemetry
       - config
     volumes:
-    # Required volume for app certs
-      - ./app/certs:/app/certs:ro
+      - ./config/nginx.conf:/app/config/nginx.conf:ro
 
   webui:
     image: azureiotpcs/pcs-remote-monitoring-webui:testing
