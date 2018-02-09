@@ -66,7 +66,7 @@ for a detailed overview of features and use cases.
 
 To get started you can follow along with the [Getting Started](#getting-started)
 for a command line deployment. You can also deploy using the web interface
-at https://azureiotsuite.com.
+at https://www.azureiotsuite.com.
 
 Getting Started
 ===============
