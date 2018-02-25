@@ -3,8 +3,28 @@
 # Note: use lowercase names for the Docker images
 DOCKER_IMAGE="azureiotpcs/remote-monitoring-nginx"
 
-DOCKER_LABEL2="Commit=$(git log --pretty=format:'%H' -n 1)"
-DOCKER_LABEL3="Date=$(/usr/bin/env date +%Y-%m-%dT%H:%M:%S)"
+APP_HOME="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && cd .. && pwd )/"
 
-docker build --compress --tag "$DOCKER_IMAGE:testing" \
-  --label "$DOCKER_LABEL2" --label "$DOCKER_LABEL3" .
+build_docker() {
+  DOCKER_LABEL2="Commit=$(git log --pretty=format:'%H' -n 1)"
+  DOCKER_LABEL3="Date=$(/usr/bin/env date +%Y-%m-%dT%H:%M:%S)"
+
+  cd $APP_HOME
+
+  rm -fR out/docker
+
+  echo "Making directory"
+  mkdir -p out/docker/content
+
+  echo "Copying files"
+  cp reverse-proxy/Dockerfile                 out/docker/Dockerfile
+  cp reverse-proxy/content/nginx.conf         out/docker/content/nginx.conf
+
+  cd out/docker/
+
+  echo "Running docker command"
+  docker build --compress --tag "$DOCKER_IMAGE:testing" \
+    --label "$DOCKER_LABEL2" --label "$DOCKER_LABEL3" .
+}
+
+build_docker
