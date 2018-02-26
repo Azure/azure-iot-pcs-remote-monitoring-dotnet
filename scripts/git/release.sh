@@ -24,9 +24,6 @@ check_input() {
     elif [ -n "$ACCESS_TOKEN" ]; then
         echo -e "${RED}Acess_token is required parameter${NC}"
         exit 1
-    elif [ -n "$DESCRIPTION" ]; then
-        echo -e "${RED}Description is required parameter${NC}"
-        exit 1
     fi
 }
 
