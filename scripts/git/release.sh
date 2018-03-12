@@ -23,20 +23,26 @@ failed() {
     exit 1
 }
 
+usage() {
+    echo -e "${RED}ERROR: $1 is a required parameter${NC}"
+    echo "Usage:"
+    echo -e "./release version access_token docker_user docker_pwd"
+}
+
 check_input() {
     if [ ! -n "$VERSION" ]; then
-        echo -e "${RED}Version is required parameter${NC}"
-        exit 1
-    elif [ ! -n "$ACCESS_TOKEN" ]; then
-        echo -e "${RED}Acess_token is required parameter${NC}"
-        exit 1
-    elif [ ! -n "$DOCKER_USER" ]; then
-        echo -e "${RED}Docker username is required parameter${NC}"
-        exit 1
-    elif [ ! -n "$DOCKER_PWD" ]; then
-        echo -e "${RED}Docker password is required parameter${NC}"
-        exit 1
+        usage "version"
     fi
+    if [ ! -n "$ACCESS_TOKEN" ]; then
+        usage "access_token"
+    fi
+    if [ ! -n "$DOCKER_USER" ]; then
+        usage "docker_user"
+    fi
+    if [ ! -n "$DOCKER_PWD" ]; then
+        usage "docker_pwd"
+    fi
+    exit 1
     echo $DOCKER_PWD | docker login -u $DOCKER_USER --password-stdin
 }
 
@@ -73,6 +79,7 @@ tag_build_publish_repo() {
     echo -e "${CYAN}====================================     Start: Release for $REPO_NAME     ====================================${NC}"
     echo
 
+    # For documentation https://help.github.com/articles/creating-releases/
     DATA="{
         \"tag_name\": \"$VERSION\",
         \"target_commitish\": \"master\",
