@@ -26,7 +26,7 @@ failed() {
 usage() {
     echo -e "${RED}ERROR: $1 is a required parameter${NC}"
     echo "Usage:"
-    echo -e "./release version access_token docker_user docker_pwd"
+    echo -e "./release version access_token docker_user docker_pwd from_dockerhub(default:azureiotpcs) to_dockerhub(default:azureiotpcs) source_tag(default:testing) description(default:empty) pre_release(default:false)"
 }
 
 check_input() {
