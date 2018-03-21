@@ -7,6 +7,6 @@ PORT=10080
 set -e
 
 echo Using port $PORT...
-docker run -it -p $PORT:80 $DOCKER_IMAGE
+docker run -it -p $PORT:10080 $DOCKER_IMAGE
 
 set +e
