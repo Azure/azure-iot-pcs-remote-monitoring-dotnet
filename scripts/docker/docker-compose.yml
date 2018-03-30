@@ -50,6 +50,8 @@ services:
 
   iothubmanager:
     image: azureiotpcs/iothub-manager-dotnet:1.0.0-preview
+    depends_on:
+      - storageadapter
     ports:
       - "9002:9002"
     environment:
@@ -58,7 +60,7 @@ services:
       - PCS_AUTH_AUDIENCE
       - PCS_APPLICATION_SECRET
       # TODO: the dependency on config is temporary
-      - PCS_CONFIG_WEBSERVICE_URL=http://config:9005/v1
+      - PCS_STORAGEADAPTER_WEBSERVICE_URL=http://storageadapter:9022/v1
 
   devicesimulation:
     image: azureiotpcs/device-simulation-dotnet:1.0.0-preview
@@ -103,7 +105,6 @@ services:
       - PCS_STORAGEADAPTER_WEBSERVICE_URL=http://storageadapter:9022/v1
       - PCS_DEVICESIMULATION_WEBSERVICE_URL=http://devicesimulation:9003/v1
       - PCS_TELEMETRY_WEBSERVICE_URL=http://telemetry:9004/v1
-      - PCS_IOTHUBMANAGER_WEBSERVICE_URL=http://iothubmanager:9002/v1
 
   storageadapter:
     image: azureiotpcs/pcs-storage-adapter-dotnet:1.0.0-preview
