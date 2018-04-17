@@ -19,7 +19,7 @@ services:
   reverseproxy:
     image: azureiotpcs/remote-monitoring-nginx:testing
     ports:
-      - "8080:80"
+      - "8080:10080"
     depends_on:
       - webui
       - auth
