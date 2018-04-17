@@ -79,22 +79,13 @@ Getting Started
     #### Prerequisite
     * Install [npm](https://www.npmjs.com/get-npm)
 
-    #### Mac/Linux
+    #### Windows/Mac/Linux
     
     ```
-    cd azure-iot-pcs-remote-monitoring-dotnet/cli
-    npm install
-    npm start
-    npm link
+    npm install -g iot-solutions
     ```
-    #### Windows
-    
-    ```
-    cd azure-iot-pcs-remote-monitoring-dotnet\cli
-    npm install
-    npm start
-    npm link
-    ```
+    #### 
+
 1. Sign into your Azure account with
     ```
     pcs login
