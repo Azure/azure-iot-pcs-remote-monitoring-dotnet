@@ -19,7 +19,14 @@ Overview
 > Plus, a lot of great functionality will be coming in the next few 
 > months, including:
 >
-> * Extended method support for your simulated devices to help demo and test additional scenarios
+> * Extended method support for your simulated devices to help demo and test additional scenarios. 
+    Details about the Contoso sample devices and rules can be found in the documentation
+    [here](https://docs.microsoft.com/azure/iot-suite/iot-suite-remote-monitoring-explore).
+    Currently the simulated Chiller device is fully implemented, the other device methods detailed
+    will be built and validated in the coming months. If you’d like to add or extend the simulated
+    devices yourself you can start with this
+    [tutorial]( https://review.docs.microsoft.com/azure/iot-suite/iot-suite-remote-monitoring-test)
+    as reference . 
 > * Additional ‘Getting Started’ and ‘Customization’ documentation in our GitHub repositories 
 > * Easier retrieval of your physical device connection string in the web solution
 > * Performance enhancements
@@ -113,7 +120,7 @@ Common Scenarios
 
 ## All done? Connect a device!
 By default, the solution uses simulated devices. You can start adding your
-own devices with the instructions here: [Connect a physical device](https://docs.microsoft.com/en-us/azure/iot-suite/iot-suite-connecting-devices-linux)
+own devices with the instructions here: [Connect a physical device](https://docs.microsoft.com/azure/iot-suite/iot-suite-connecting-devices-linux)
 
 ## Stopping Simulated Devices
 Once you are ready, you can stop the default simulated devices by calling the simulation endpoint with the instructions [here](https://github.com/Azure/device-simulation-dotnet/wiki/%5BAPI-Specifications%5D-Simulations#stop-simulation).
