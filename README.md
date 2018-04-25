@@ -57,111 +57,20 @@ millions of IoT devices and a solution back end.
 Check out the [Interactive Demo](http://dev-azureiotclicks01.azurewebsites.net/demos/remotemonitoring)
 for a detailed overview of features and use cases.
 
-To get started you can follow along with the [Getting Started](#getting-started)
-for a command line deployment. You can also deploy using the web interface
-at https://www.azureiotsuite.com.
-
 Getting Started
 ===============
 
-## Prerequisites
-* [Azure Subscription](https://azure.microsoft.com/free/) (also see [permissions guidelines](https://docs.microsoft.com/azure/iot-suite/iot-suite-permissions))
-
-## Setup
-1. Open a terminal window or command shell
-1. Check out the repository and submodules
-    ```
-    git clone --recursive https://github.com/Azure/azure-iot-pcs-remote-monitoring-dotnet.git
-    ```
-    If you cloned the repo without the `--recursive` flag and it's your first time updating the submodules, you can use
-    `git submodule update --init --recursive`. More information on submodules [here](https://git-scm.com/book/en/v2/Git-Tools-Submodules).
-1. Set up command line interface for deployments
-    #### Prerequisite
-    * Install [npm](https://www.npmjs.com/get-npm)
-
-    #### Windows/Mac/Linux
-    
-    ```
-    npm install -g iot-solutions
-    ```
-    #### 
-
-1. Sign into your Azure account with
-    ```
-    pcs login
-    ```
-
-## Deploy a remote monitoring solution
-### Standard Deployment
-A standard deployment is a production-ready solution for reliability and scale. *See [Basic vs. Standard Deployments](#basic-vs-standard-deployments) for more details.*
-```
-pcs -s standard
-```
-
-### Basic Deployment
-A lower-cost showcase solution best for discovering and learning about what a Remote Monitoring preconfigured solution has to offer.  *See [Basic vs. Standard Deployments](#basic-vs-standard-deployments) for more details.*
-```
-pcs
-```
-
-### Local Deployment
-To set up a Remote Monitoring Solution locally see
-[Local Development](https://github.com/Azure/azure-iot-pcs-remote-monitoring-dotnet/wiki/Developer-Reference-Guide#local-development)
+You can follow along with the [Getting Started](https://docs.microsoft.com/azure/iot-suite/iot-suite-remote-monitoring-deploy) documentation to learn how to deploy using the web interface. You can also deploy using the [command line](https://docs.microsoft.com/azure/iot-suite/iot-suite-remote-monitoring-deploy-cli).
 
 Common Scenarios
 ================
+## Create more simulated devices
+Once you have a solution up and running, you can [create more simluated devices](https://docs.microsoft.com/azure/iot-suite/iot-suite-remote-monitoring-test) to populate telemetry. Yoou can then stop the default simulated devices by calling the simulation endpoint with the instructions [here](https://github.com/Azure/device-simulation-dotnet/wiki/%5BAPI-Specifications%5D-Simulations#stop-simulation).
 
-## All done? Connect a device!
-By default, the solution uses simulated devices. You can start adding your
-own devices with the instructions here: [Connect a physical device](https://docs.microsoft.com/en-us/azure/iot-suite/iot-suite-connecting-devices-linux)
-
-## Stopping Simulated Devices
-Once you are ready, you can stop the default simulated devices by calling the simulation endpoint with the instructions [here](https://github.com/Azure/device-simulation-dotnet/wiki/%5BAPI-Specifications%5D-Simulations#stop-simulation).
-
-Basic vs. Standard Deployments
-==============================
-## Basic
-Basic deployment is geared toward showcasing the solution. To reduce the cost
-of this demonstration, all the microservices are deployed in a single
-virtual machine; this is not considered a production-ready architecture.
-
-Our Standard deployment option should be used when you are ready to customize
-a production-ready architecture, built for scale and extensibility.
-
-Creating a Basic solution will result in the following Azure services being
-provisioned into your Azure subscription at cost: 
-
-| Count | Resource                       | Type         | Used For |
-|-------|--------------------------------|--------------|----------|
-| 1     | [Linux Virtual Machine][virtual-machines] | Standard D1 V2  | Hosting microservices |
-| 1     | [Azure IoT Hub][iot-hub]                  | S1 – Basic tier | Device management and communication |
-| 1     | [Azure Cosmos DB][cosmos-db]              | Standard        | Storing configuration data, and device telemetry like rules, alarms, and messages |
-| 1     | [Azure Storage Account][storage-account]  | Standard        | Storage for VM and streaming checkpoints |
-| 1     | [Web Application][web-application]        |                 | Hosting front-end web application |
-
-## Standard
-The standard deployment is a production-ready deployment a developer can
-customize and extend to meet their needs. For reliability and scale, application
-microservices are built as Docker containers and deployed using an orchestrator
-([Kubernetes](https://kubernetes.io/) by default). The orchestrator is
-responsible for deployment, scaling, and management of the application.
-
-Creating a Standard solution will result in the following Azure services being
-provisioned into your Azure subscription at cost:
-
-| Count | Resource                                     | SKU / Size      | Used For |
-|-------|----------------------------------------------|-----------------|----------|
-| 4     | [Linux Virtual Machines][virtual-machines]   | Standard D2 V2  | 1 master and 3 agents for hosting microservices with redundancy |
-| 1     | [Azure Container Service][container-service] |                 | [Kubernetes](https://kubernetes.io) orchestrator |
-| 1     | [Azure IoT Hub][iot-hub]                     | S1 – Basic tier | Device management, command and control |
-| 1     | [Azure Cosmos DB][cosmos-db]                 | Standard        | Storing configuration data, and device telemetry like rules, alarms, and messages |
-| 5     | [Azure Storage Accounts][storage-account]    | Standard        | 4 for VM storage, and 1 for the streaming checkpoints |
-| 1     | [App Service][web-application]               | S1 Standard     | Application gateway over SSL |
-
-> Pricing information for these services can be found
-[here](https://azure.microsoft.com/pricing). Usage amounts and billing details
-for your subscription can be found in the
-[Azure Portal](https://portal.azure.com/).
+## All done? Connect a Physical device!
+By default, the solution once spun up uses simulated devices. You can start adding your
+own devices with the instructions here: 
+* [Connect a physical device](https://docs.microsoft.com/azure/iot-suite/iot-suite-connecting-devices-node)
 
 Architecture Overview
 =====================
@@ -169,22 +78,7 @@ Architecture Overview
 <img src="https://user-images.githubusercontent.com/3317135/31914374-44a4be80-b7ff-11e7-86b2-19845ab65d7a.png" width="700" height="auto"/>
 </div>
 
-[Open in draw.io][draw-io-map]
-
-## Microservices & Docker Containers
-Remote Monitoring is the first of our preconfigured solutions to leverage a
-microservices architecture. The solution is available in both .NET and [Java](https://github.com/Azure/azure-iot-pcs-remote-monitoring-java).
-Microservices have emerged as a prevalent pattern to achieve scale and flexibility
-(by allowing containers to be scaled individually), without compromising development speed.
-Microservices compartmentalize the code and provide well defined interfaces
-making the solution easier to understand and less monolithic. It also further
-expands options for partners that want to extend our current preconfigured
-solutions to build finished solutions that can be monetized.
-
-**Learn more about Docker Containers**
-* [Install Docker](https://docs.docker.com/engine/installation/)
-* [Common Docker Commands for Remote Monitoring](https://github.com/Azure/azure-iot-pcs-remote-monitoring-dotnet/wiki/Developer-Reference-Guide#common-docker-commands)
-* [Docker Getting Started](https://docs.docker.com/get-started/)
+[Learn more](https://docs.microsoft.com/azure/iot-suite/iot-suite-remote-monitoring-sample-walkthrough) about the remote monitoring architecture, including the use of microservices and docker containers.
 
 ## Components
 * [Remote Monitoring Web UI](https://github.com/Azure/pcs-remote-monitoring-webui)
