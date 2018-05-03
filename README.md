@@ -70,7 +70,7 @@ Common Scenarios
 ## Create more simulated devices
 Once you have a solution up and running, you can [create more simluated devices](https://docs.microsoft.com/azure/iot-suite/iot-suite-remote-monitoring-test) to populate telemetry. You can then stop the default simulated devices by calling the simulation endpoint with the instructions [here](https://github.com/Azure/device-simulation-dotnet/wiki/%5BAPI-Specifications%5D-Simulations#stop-simulation).
 
-## Connect a Physical device!
+## Connect a physical device!
 By default, the solution once spun up uses simulated devices. You can start adding your
 own devices with the instructions here: 
 * [Connect a physical device](https://docs.microsoft.com/azure/iot-suite/iot-suite-connecting-devices-node)
