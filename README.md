@@ -60,14 +60,17 @@ for a detailed overview of features and use cases.
 Getting Started
 ===============
 
-You can follow along with the [Getting Started](https://docs.microsoft.com/azure/iot-suite/iot-suite-remote-monitoring-deploy) documentation to learn how to deploy using the web interface. You can also deploy using the [command line](https://docs.microsoft.com/azure/iot-suite/iot-suite-remote-monitoring-deploy-cli).
+## Deploy a solution
+There are two ways to deploy a solution:
+1) Deploy using the web interface using the instructions [here](https://docs.microsoft.com/azure/iot-suite/iot-suite-remote-monitoring-deploy).
+2) Deploy using the [command line](https://docs.microsoft.com/azure/iot-suite/iot-suite-remote-monitoring-deploy-cli).
 
 Common Scenarios
 ================
 ## Create more simulated devices
 Once you have a solution up and running, you can [create more simluated devices](https://docs.microsoft.com/azure/iot-suite/iot-suite-remote-monitoring-test) to populate telemetry. You can then stop the default simulated devices by calling the simulation endpoint with the instructions [here](https://github.com/Azure/device-simulation-dotnet/wiki/%5BAPI-Specifications%5D-Simulations#stop-simulation).
 
-## All done? Connect a Physical device!
+## Connect a Physical device!
 By default, the solution once spun up uses simulated devices. You can start adding your
 own devices with the instructions here: 
 * [Connect a physical device](https://docs.microsoft.com/azure/iot-suite/iot-suite-connecting-devices-node)
@@ -78,7 +81,7 @@ Architecture Overview
 <img src="https://user-images.githubusercontent.com/3317135/31914374-44a4be80-b7ff-11e7-86b2-19845ab65d7a.png" width="700" height="auto"/>
 </div>
 
-[Learn more](https://docs.microsoft.com/azure/iot-suite/iot-suite-remote-monitoring-sample-walkthrough) about the remote monitoring architecture, including the use of microservices and docker containers.
+[Learn more](https://docs.microsoft.com/azure/iot-suite/iot-suite-remote-monitoring-sample-walkthrough) about the Remote Monitoring architecture, including the use of microservices and Docker containers.
 
 ## Components
 * [Remote Monitoring Web UI](https://github.com/Azure/pcs-remote-monitoring-webui)
