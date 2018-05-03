@@ -1,5 +1,8 @@
+#!/usr/bin/env bash
+# Copyright (c) Microsoft. All rights reserved.
+# Note: Windows Bash doesn't support shebang extra params
+set -e
 
-#!/usr/bin/env bash -e
 VERSION=$1
 ACCESS_TOKEN=$2
 DOCKER_USER=$3
