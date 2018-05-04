@@ -30,6 +30,7 @@ usage() {
     echo -e "${RED}ERROR: $1 is a required parameter${NC}"
     echo "Usage:"
     echo -e "./release version access_token docker_user docker_pwd from_dockerhub(default:azureiotpcs) to_dockerhub(default:azureiotpcs) source_tag(default:testing) description(default:empty) pre_release(default:false)"
+    exit 1
 }
 
 check_input() {
@@ -45,7 +46,6 @@ check_input() {
     if [ ! -n "$DOCKER_PWD" ]; then
         usage "docker_pwd"
     fi
-    exit 1
     echo $DOCKER_PWD | docker login -u $DOCKER_USER --password-stdin
 }
 
