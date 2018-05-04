@@ -134,7 +134,7 @@ tag_build_publish_repo device-simulation  device-simulation-dotnet
 tag_build_publish_repo iothub-manager     iothub-manager-dotnet
 tag_build_publish_repo storage-adapter    pcs-storage-adapter-dotnet
 tag_build_publish_repo telemetry          device-telemetry-dotnet               telemetry-dotnet
-tag_build_publish_repo telemetry-agent    telemetry-agent-dotnet
+tag_build_publish_repo asa-manager        asa-manager-dotnet
 tag_build_publish_repo webui              pcs-remote-monitoring-webui
 
 # PCS CLI
