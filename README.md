@@ -10,7 +10,7 @@ Remote Monitoring preconfigured solution with Azure IoT
 
 Overview
 ========
-> learn more from our
+> Learn more from our
 > [blog announcement](https://azure.microsoft.com/en-in/blog/the-next-generation-of-azure-iot-suite-accelerates-iot-solutions/). 
 > The remote monitoring solution incorporates learnings from customers
 > and partners, and is a fully operational IoT solution right out of the
