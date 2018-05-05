@@ -10,7 +10,6 @@ Remote Monitoring Solution with Azure IoT
 
 Overview
 ========
-
 > There is a Java version of this repo available [here](https://github.com/Azure/azure-iot-pcs-remote-monitoring-java)
 
 Remote monitoring helps you get better visibility into your devices, assets, and
@@ -42,8 +41,8 @@ There are two ways to deploy a solution:
 
 Common Scenarios
 ================
-## Create more simulated devices
-Once you have a solution up and running, you can [create more simluated devices](https://docs.microsoft.com/azure/iot-suite/iot-suite-remote-monitoring-test) to populate telemetry. You can then stop the default simulated devices by calling the simulation endpoint with the instructions [here](https://github.com/Azure/device-simulation-dotnet/wiki/%5BAPI-Specifications%5D-Simulations#stop-simulation).
+## Create additional simulated devices
+Once you have a solution up and running, you can [create additional simulated devices](https://docs.microsoft.com/azure/iot-suite/iot-suite-remote-monitoring-test). You can then stop the default simulated devices by calling the simulation endpoint with the instructions [here](https://github.com/Azure/device-simulation-dotnet/wiki/%5BAPI-Specifications%5D-Simulations#stop-simulation).
 
 ## Connect a physical device!
 By default, the solution once spun up uses simulated devices. You can start adding your
