@@ -10,8 +10,8 @@ Remote Monitoring preconfigured solution with Azure IoT
 
 Overview
 ========
-> This solution is currently in preview (learn more from our
-> [blog announcement](https://azure.microsoft.com/en-in/blog/the-next-generation-of-azure-iot-suite-accelerates-iot-solutions/)). 
+> Learn more from our
+> [blog announcement](https://azure.microsoft.com/en-in/blog/the-next-generation-of-azure-iot-suite-accelerates-iot-solutions/). 
 > The remote monitoring solution incorporates learnings from customers
 > and partners, and is a fully operational IoT solution right out of the
 > box. 
@@ -32,7 +32,7 @@ Overview
 >
 > There is also a Java version of this repo available [here](https://github.com/Azure/azure-iot-pcs-remote-monitoring-java)
 
-The preview offers many features but there are known bugs. You can refer to our
+This solution offers many features but there are known bugs. You can refer to our
 [Issues List](issues) in this repo (and in any submodules) to see known requests 
 and issues. If something doesn’t work as you would expect, feel free to submit new
 [issues](https://github.com/Azure/azure-iot-pcs-remote-monitoring-dotnet/issues). 
@@ -67,8 +67,8 @@ There are two ways to deploy a solution:
 
 Common Scenarios
 ================
-## Create more simulated devices
-Once you have a solution up and running, you can [create more simluated devices](https://docs.microsoft.com/azure/iot-suite/iot-suite-remote-monitoring-test) to populate telemetry. You can then stop the default simulated devices by calling the simulation endpoint with the instructions [here](https://github.com/Azure/device-simulation-dotnet/wiki/%5BAPI-Specifications%5D-Simulations#stop-simulation).
+## Create additional simulated devices
+Once you have a solution up and running, you can [create additional simulated devices](https://docs.microsoft.com/azure/iot-suite/iot-suite-remote-monitoring-test). You can then stop the default simulated devices by calling the simulation endpoint with the instructions [here](https://github.com/Azure/device-simulation-dotnet/wiki/%5BAPI-Specifications%5D-Simulations#stop-simulation).
 
 ## Connect a physical device!
 By default, the solution once spun up uses simulated devices. You can start adding your
