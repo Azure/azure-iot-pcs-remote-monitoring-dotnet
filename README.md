@@ -27,6 +27,8 @@ millions of IoT devices and a solution back end.
 Check out the [Interactive Demo](http://www.microsoftazureiotsuite.com/demos/remotemonitoring)
 for a detailed overview of features and use cases.
 
+To get started you can follow along with the Getting Started for a command line deployment. You can also deploy using the web interface at https://www.azureiotsolutions.com.
+
 ### Documentation
 See more documentation [here](https://docs.microsoft.com/azure/iot-suite/).
 
