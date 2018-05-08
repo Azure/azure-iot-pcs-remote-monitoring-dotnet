@@ -81,7 +81,7 @@ How-to and Troubleshooting Resources
 Feedback
 ========
 * If you have feedback, feature requests, or find a problem, you can create
-  a new issue in the [GitHub Issues](issues)
+  a new issue in the [GitHub Issues][issues-url]
 * We also have a [User Voice](https://feedback.azure.com/forums/321918-azure-iot) channel to receive suggestions for features and future supported scenarios.
 
 Contributing
@@ -99,10 +99,10 @@ Licensed under the [MIT](LICENSE) License.
 [issues-url]: https://github.com/azure/azure-iot-pcs-remote-monitoring-dotnet/issues
 [gitter-badge]: https://img.shields.io/gitter/room/azure/iot-solutions.js.svg
 [gitter-url]: https://gitter.im/Azure/iot-solutions
-[azure-active-directory]: https://azure.microsoft.com/services/active-directory/
-[iot-hub]: https://azure.microsoft.com/services/iot-hub/
-[cosmos-db]: https://azure.microsoft.com/services/cosmos-db/
-[container-service]: https://azure.microsoft.com/services/container-service/
+[azure-active-directory]: https://azure.microsoft.com/services/active-directory
+[iot-hub]: https://azure.microsoft.com/services/iot-hub
+[cosmos-db]: https://azure.microsoft.com/services/cosmos-db
+[container-service]: https://azure.microsoft.com/services/container-service
 [storage-account]: https://docs.microsoft.com/azure/storage/common/storage-introduction#types-of-storage-accounts
-[virtual-machines]: https://azure.microsoft.com/services/virtual-machines/
-[web-application]: https://azure.microsoft.com/services/app-service/web/
+[virtual-machines]: https://azure.microsoft.com/services/virtual-machines
+[web-application]: https://azure.microsoft.com/services/app-service/web
