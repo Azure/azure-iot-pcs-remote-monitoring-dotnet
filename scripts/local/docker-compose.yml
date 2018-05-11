@@ -121,26 +121,24 @@ services:
       - PCS_CORS_WHITELIST
       - PCS_APPLICATION_SECRET
 
-  telemetryagent:
-    image: azureiotpcs/telemetry-agent-dotnet:testing
+  asamanager:
+    image: azureiotpcs/asa-manager-dotnet:testing
     depends_on:
       - telemetry
       - iothubmanager
       - config
     environment:
-      - PCS_TELEMETRYAGENT_DOCUMENTDB_CONNSTRING
+      - PCS_TELEMETRY_DOCUMENTDB_CONNSTRING
       - PCS_TELEMETRY_WEBSERVICE_URL=http://telemetry:9004/v1
       - PCS_CONFIG_WEBSERVICE_URL=http://config:9005/v1
       - PCS_IOTHUBMANAGER_WEBSERVICE_URL=http://iothubmanager:9002/v1
-      - PCS_IOTHUBREACT_AZUREBLOB_ACCOUNT
-      - PCS_IOTHUBREACT_AZUREBLOB_KEY
-      - PCS_IOTHUBREACT_AZUREBLOB_ENDPOINT_SUFFIX
-      - PCS_IOTHUBREACT_HUB_NAME
-      - PCS_IOTHUBREACT_HUB_ENDPOINT
-      - PCS_IOTHUBREACT_HUB_PARTITIONS
-      - PCS_IOTHUBREACT_ACCESS_CONNSTRING
-      - PCS_AUTH_ISSUER
-      - PCS_AUTH_AUDIENCE
+      - PCS_ASA_DATA_AZUREBLOB_ACCOUNT
+      - PCS_ASA_DATA_AZUREBLOB_KEY
+      - PCS_ASA_DATA_AZUREBLOB_ENDPOINT_SUFFIX
+      - PCS_EVENTHUB_CONNSTRING
+      - PCS_EVENTHUB_NAME
       - PCS_AUTH_REQUIRED
       - PCS_CORS_WHITELIST
+      - PCS_AUTH_ISSUER
+      - PCS_AUTH_AUDIENCE
       - PCS_APPLICATION_SECRET
