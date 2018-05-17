@@ -59,7 +59,6 @@ services:
       - PCS_AUTH_ISSUER
       - PCS_AUTH_AUDIENCE
       - PCS_APPLICATION_SECRET
-      # TODO: the dependency on config is temporary
       - PCS_STORAGEADAPTER_WEBSERVICE_URL=http://storageadapter:9022/v1
 
   devicesimulation:
