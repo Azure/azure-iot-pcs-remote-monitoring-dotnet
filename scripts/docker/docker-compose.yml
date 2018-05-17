@@ -98,7 +98,7 @@ services:
     ports:
       - "9005:9005"
     environment:
-      - PCS_BINGMAP_KEY
+      - PCS_AZUREMAPS_KEY
       - PCS_AUTH_ISSUER
       - PCS_AUTH_AUDIENCE
       - PCS_APPLICATION_SECRET

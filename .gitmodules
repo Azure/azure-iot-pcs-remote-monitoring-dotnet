@@ -13,9 +13,6 @@
 [submodule "storage-adapter"]
 	path = storage-adapter
 	url = https://github.com/Azure/pcs-storage-adapter-dotnet.git
-[submodule "telemetry-agent"]
-	path = telemetry-agent
-	url = https://github.com/Azure/telemetry-agent-dotnet
 [submodule "config"]
 	path = config
 	url = https://github.com/Azure/pcs-config-dotnet.git
@@ -25,3 +22,6 @@
 [submodule "telemetry"]
 	path = telemetry
 	url = https://github.com/Azure/device-telemetry-dotnet.git
+[submodule "asa-manager"]
+	path = asa-manager
+	url = https://github.com/Azure/asa-manager-dotnet

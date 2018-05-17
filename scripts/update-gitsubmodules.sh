@@ -26,7 +26,7 @@ echo -e "${COL}### Storage Adapter${NOCOL}"
 git submodule update storage-adapter   && cd storage-adapter   && git checkout master && git pull && cd ..
 echo -e "${COL}### Telemetry${NOCOL}"
 git submodule update telemetry         && cd telemetry         && git checkout master && git pull && cd ..
-echo -e "${COL}### Telemetry Agent${NOCOL}"
-git submodule update telemetry-agent   && cd telemetry-agent   && git checkout master && git pull && cd ..
+echo -e "${COL}### ASA Manager${NOCOL}"
+git submodule update asa-manager       && cd asa-manager       && git checkout master && git pull && cd ..
 echo -e "${COL}### Web UI${NOCOL}"
 git submodule update webui             && cd webui             && git checkout master && git pull && cd ..
