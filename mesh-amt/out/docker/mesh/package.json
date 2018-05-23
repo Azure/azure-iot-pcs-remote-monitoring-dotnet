@@ -1,0 +1,30 @@
+{
+  "name": "mps-microservice",
+  "version": "0.0.1",
+  "description": "Containerized MPS service",
+  "main": "mainservice.js",
+  "files": [
+    "*.js",
+    "LICENSE",
+    "README.md",
+    "private",
+    "public"
+  ],
+  "directories": {
+    "test": "test"
+  },
+  "scripts": {
+    "test": "mocha"
+  },
+  "author": "",
+  "license": "Apache-2.0",
+  "dependencies": {
+    "express": "^4.16.3",
+    "express-ws": "^2.0.0",
+    "minimist": "^1.2.0",
+    "node-forge": "^0.7.5"
+  },
+  "devDependencies": {
+    "mocha": "^3.5.0"
+  }
+}

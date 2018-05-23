@@ -9,12 +9,12 @@
 #
 
 # see: Shared access policies => key name => Connection string
-export PCS_IOTHUB_CONNSTRING="..."
+#export PCS_IOTHUB_CONNSTRING="..."
 
-export PCS_CONFIG_WEBSERVICE_URL="..."
+#export PCS_CONFIG_WEBSERVICE_URL="..."
 
 # The OpenId tokens issuer URL, e.g. https://sts.windows.net/12000000-3400-5600-0000-780000000000/
-export PCS_AUTH_ISSUER="{enter the token issuer URL here}"
+#export PCS_AUTH_ISSUER="{enter the token issuer URL here}"
 
 # The intended audience of the tokens, e.g. your Client Id
-export PCS_AUTH_AUDIENCE="{enter the tokens audience here}"
+#export PCS_AUTH_AUDIENCE="{enter the tokens audience here}"
