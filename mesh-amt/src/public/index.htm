@@ -1,0 +1,163 @@
+<html>
+    <head>
+        <title>MPS Micro Service</title>
+        <link rel="stylesheet" href="styles/style.css" >
+    </head>
+    <body style="width:100%;height:100%;margin:0;padding:0;overflow:hidden;background-color:#ffffff">
+    <form action="#" method="POST">
+        <div style="width:100%;height:40px;margin:0;padding:0px;overflow:hidden;background-color:#003c71">
+            <span style="font-size: 18pt;color: #ffffff;padding-left: 50pt;padding-top: 10pt;">MPS Micro Service</span>
+        </div>
+        <div id="xdevices" style="height:400px;overflow-y:scroll"></div>
+        <div id="xutils" style="display:none;position:fixed;width:100%;height:400px;bottom:20px;left:0;margin:0;padding:0px;overflow:hidden;background-color: gray">
+            <input type="button" style='float:right;' value="Close" onclick="closeDeviceInfo()">
+            <br/>
+            <table>
+                <tr>
+                    <td>Name</td><td></td>
+                </tr>
+                <tr>
+                    <td>GUID</td><td></td>
+                </tr>
+                <tr>
+                    <td>MPS Username</td><td></td>
+                </tr>
+                <tr>
+                    <td>MPS Password</td><td></td>
+                </tr>
+                <tr>
+                    <td>AMT Username</td><td></td>
+                </tr>
+                <tr>
+                    <td>AMT Password</td><td></td>
+                </tr>
+                </table>
+        </div>
+        <div style="position:fixed;width:100%;height:20px;bottom:0;left:0;margin:0;padding:0;overflow:hidden;background-color:#003c71"></div>
+    </form>
+    </body>
+    <script type="text/javascript">
+    var ctrl_ws = null;//JSON control channel
+    var retry_timer = 0;
+    var computerlist = [];
+    var computerHash = {};
+    var currentdevice = null;
+
+
+    // radio button change handler
+    function radiochanged(param) {
+        console.log("Radio button changed to: "+param.value);
+        computerHash[param.value].checked = true;
+        console.log(JSON.stringify(computerHash[param.value]," ", null));
+        QV('xutils',true);
+    }
+
+    function clearradio() {
+        var items = document.getElementsByName('select_device_radio');
+        for (var i in items) {
+            if (items[i].checked==true) {
+                computerHash[items[i].value].checked=false;
+                items[i].checked = false;
+            }
+        }
+    }
+
+    function closeDeviceInfo() {
+        clearradio();
+        QV('xutils',false);
+    }
+
+    // update device list
+    function updateDeviceList() {
+        QH("xdevices","");// clear out list container
+        computerHash = {};        
+        for (var i = 0; i < computerlist.length; i++) {
+            var str = "<div style='vertical-align:middle;display:inline-block;width:200px;' id='"+(computerlist[i].host)+"'>";
+            str += "<input type='radio' name='select_device_radio' value='"+computerlist[i].host+"' style='vertical-align: middle;' onchange='radiochanged(this)'>&nbsp;";
+            if (!computerlist[i].icon) {computerlist[i].icon=1;}
+            if (computerlist[i].conn != null && computerlist[i].conn != 0) {
+                str += "<img class='icon_on' src='images/icons200-" + computerlist[i].icon + "-1.png'>&nbsp;";
+            } else {
+                str += "<img class='icon_off' src='images/icons200-" + computerlist[i].icon + "-1.png'>&nbsp;";
+            }
+            str += computerlist[i].name;
+            computerHash[computerlist[i].host]=computerlist[i];
+            str +="</div>";            
+            QA("xdevices",str);
+        }                
+    }
+
+    // fetch devices list, copied from Ylian's remote.htm 
+    function loadDeviceList() {
+        var request = new XMLHttpRequest();
+        request.onload = function() {
+            if (request.status >= 200 && request.status < 400) {
+                // Success
+                var serverComputerList = JSON.parse(request.responseText);
+                if (serverComputerList && serverComputerList != null && serverComputerList instanceof Array) {
+                    currentcomputer = null;
+                    computerlist = [];
+                    for (var i in serverComputerList) {
+                        var computer = serverComputerList[i];
+                        if (computer['host']) {
+                            computer.checked = false;
+                            if (!computer['h']) computer['h'] = Math.random(); // If "h" handle is not present, create one.
+                            if (!computer['tls']) computer['tls'] = 0; // If TLS is not present, assume 0.
+                            computerlist.push(computer);
+                        }
+                    }
+                    updateDeviceList();
+                }
+            } else {
+                console.log('Failed to get server computer list');
+            }
+        };
+
+        request.onerror = function() {
+            console.log('Failed to get server computer list');
+        };
+        request.open('GET', 'webrelay.ashx?action=getallcomputer', true);
+        request.send();
+
+    }
+    
+    // init persistent JSON control channel for receiving notification
+    function initControlChannel() {
+        ctrl_ws = new WebSocket(window.location.protocol.replace("http", "ws") + "//" + window.location.host + window.location.pathname.substring(0, window.location.pathname.lastIndexOf('/')) + "/control.ashx"); 
+        ctrl_ws.onopen = function (evt) {
+            if (retry_timer!=0) {
+                console.log("Clearing retry timer.");
+                clearInterval(retry_timer);
+                retry_timer = 0;
+            }
+            //console.log(JSON.stringify(evt));              
+        }
+        ctrl_ws.onmessage = function (evt) {
+            //console.log(JSON.stringify(evt.data));
+            setTimeout(function () { loadDeviceList();}, 200);
+        }
+        ctrl_ws.onclose = function () {
+            console.log("Control channel closed, retying connection in 5 seconds.");
+            retry_timer = setInterval(function() { 
+                console.log("Retrying again.");
+                initControlChannel();
+            }, 5000);
+        }
+    }
+
+    function startup() {
+        loadDeviceList();
+        initControlChannel();
+    };
+    startup();
+
+    // Quick UI functions, a bit of a replacement for jQuery
+    function Q(x) { return document.getElementById(x); }                            // "Q"
+    function QS(x) { try { return Q(x).style; } catch (x) { } }                     // "Q" style
+    function QE(x, y) { try { Q(x).disabled = !y; } catch (x) { } }                 // "Q" enable
+    function QV(x, y) { try { QS(x).display = (y ? '' : 'none'); } catch (x) { } }  // "Q" visible
+    function QA(x, y) { Q(x).innerHTML += y; }                                      // "Q" append
+    function QH(x, y) { Q(x).innerHTML = y; }                                       // "Q" html
+
+    </script>
+</html>
