@@ -57,3 +57,15 @@ The two files are to simulate credential storages and GUID for whitelisting.
 ## TODO
 * REST API to update credentials
 * UI Components for AMT KVM and Terminal.
+
+
+## Added docker support. Follow the steps to run this inside a docker container
+
+* Install Docker on your development machine
+* Install nodejs
+* Install git
+
+- cd into scripts/docker
+- run build.cmd
+- run run.cmd
+- run run-debug.cmd (to run express in debug mode)
