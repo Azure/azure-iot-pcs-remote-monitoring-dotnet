@@ -3,16 +3,30 @@
 # Note: Windows Bash doesn't support shebang extra params
 set -e
 
-VERSION=$1
-ACCESS_TOKEN=$2
-DOCKER_USER=$3
-DOCKER_PWD=$4
-FROM_DOCKERHUB_NAMESPACE=${5:-azureiotpcs}
-TO_DOCKERHUB_NAMESPACE=${6:-azureiotpcs}
-SOURCE_TAG="${7:-testing}"
-DESCRIPTION=$8
-PRE_RELEASE=${9:-false}
-LOCAL=${10}
+while [ "$#" -gt 0 ]; do
+    case "$1" in
+        --version)                      VERSION="$2" ;;
+        --git_access_token)             GIT_ACCESS_TOKEN="$2" ;;
+        --docker_user)                  DOCKER_USER="$2" ;;
+        --docker_pwd)                   DOCKER_PWD="$2" ;;
+        --from_docker_namespace)        FROM_DOCKER_NAMESPACE="$2" ;;
+        --to_docker_namespace)          TO_DOCKER_NAMESPACE="$2" ;;
+        --docker_tag)                   DOCKER_TAG="$2" ;;
+        --description)                  DESCRIPTION="$2" ;;
+        --pre_release)                  PRE_RELEASE="$2" ;;
+        --local)                        LOCAL="$2" ;;
+    esac
+    shift
+done
+
+# Set default values for optional parameters
+FROM_DOCKER_NAMESPACE=${FROM_DOCKER_NAMESPACE:-azureiotpcs}
+TO_DOCKER_NAMESPACE=${TO_DOCKER_NAMESPACE:-azureiotpcs}
+DOCKER_TAG=${DOCKER_TAG:-testing}
+DESCRIPTION=${DESCRIPTION:-''}
+PRE_RELEASE=${PRE_RELEASE:-false}
+LOCAL=${LOCAL:-''}
+
 APP_HOME="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && cd .. && cd .. && pwd )/"
 
 NC="\033[0m" # no color
@@ -27,9 +41,20 @@ failed() {
 }
 
 usage() {
-    echo -e "${RED}ERROR: $1 is a required parameter${NC}"
-    echo "Usage:"
-    echo -e "./release version access_token docker_user docker_pwd from_dockerhub(default:azureiotpcs) to_dockerhub(default:azureiotpcs) source_tag(default:testing) description(default:empty) pre_release(default:false)"
+    echo -e "${RED}ERROR: $1 is a required option${NC}"
+    echo "Usage: ./release"
+    echo -e 'Options:
+        --version               Version of this release (required)
+        --git_access_token      Git access token to push tag (required)
+        --docker_user           Username to login docker hub (required)
+        --docker_pwd            Password to login docker hub (required)
+        --from_docker_namespace Source namespace of docker image (default:azureiotpcs)
+        --to_docker_namespace   Target namespace of docker image (default:azureiotpcs)
+        --docker_tag            Source tag of docker image (default:testing)
+        --description           Description of this release (default:empty)
+        --pre_release           Publish as non-production release on github (default:false)
+        --local                 Clean up the local repo at first (default:empty)
+        '
     exit 1
 }
 
@@ -37,8 +62,8 @@ check_input() {
     if [ ! -n "$VERSION" ]; then
         usage "version"
     fi
-    if [ ! -n "$ACCESS_TOKEN" ]; then
-        usage "access_token"
+    if [ ! -n "$GIT_ACCESS_TOKEN" ]; then
+        usage "git_access_token"
     fi
     if [ ! -n "$DOCKER_USER" ]; then
         usage "docker_user"
@@ -72,7 +97,7 @@ tag_build_publish_repo() {
     git fetch --tags
 
     git tag --force $VERSION
-    git push https://$ACCESS_TOKEN@github.com/Azure/$REPO_NAME.git $VERSION
+    git push https://$GIT_ACCESS_TOKEN@github.com/Azure/$REPO_NAME.git $VERSION
 
     echo
     echo -e "${CYAN}====================================     End: Tagging $REPO_NAME repo     ====================================${NC}"
@@ -92,7 +117,7 @@ tag_build_publish_repo() {
         \"prerelease\": $PRE_RELEASE
     }"
 
-    curl -X POST --data "$DATA" https://api.github.com/repos/Azure/$REPO_NAME/releases?access_token=$ACCESS_TOKEN
+    curl -X POST --data "$DATA" https://api.github.com/repos/Azure/$REPO_NAME/releases?access_token=$GIT_ACCESS_TOKEN
     echo
     echo -e "${CYAN}====================================     End: Release for $REPO_NAME     ====================================${NC}"
     echo
@@ -115,13 +140,13 @@ tag_build_publish_repo() {
         echo
         
         # Tag containers
-        echo -e "${CYAN}Tagging $FROM_DOCKERHUB_NAMESPACE/$DOCKER_CONTAINER_NAME:$SOURCE_TAG ==> $TO_DOCKERHUB_NAMESPACE/$DOCKER_CONTAINER_NAME:$VERSION${NC}"
+        echo -e "${CYAN}Tagging $FROM_DOCKER_NAMESPACE/$DOCKER_CONTAINER_NAME:$DOCKER_TAG ==> $TO_DOCKER_NAMESPACE/$DOCKER_CONTAINER_NAME:$VERSION${NC}"
         echo
-        docker tag $FROM_DOCKERHUB_NAMESPACE/$DOCKER_CONTAINER_NAME:$SOURCE_TAG  $TO_DOCKERHUB_NAMESPACE/$DOCKER_CONTAINER_NAME:$VERSION
+        docker tag $FROM_DOCKER_NAMESPACE/$DOCKER_CONTAINER_NAME:$DOCKER_TAG  $TO_DOCKER_NAMESPACE/$DOCKER_CONTAINER_NAME:$VERSION
 
         # Push containers
-        echo -e "${CYAN}Pusing container $TO_DOCKERHUB_NAMESPACE/$DOCKER_CONTAINER_NAME:$VERSION${NC}"
-        docker push $TO_DOCKERHUB_NAMESPACE/$DOCKER_CONTAINER_NAME:$VERSION
+        echo -e "${CYAN}Pusing container $TO_DOCKER_NAMESPACE/$DOCKER_CONTAINER_NAME:$VERSION${NC}"
+        docker push $TO_DOCKER_NAMESPACE/$DOCKER_CONTAINER_NAME:$VERSION
     fi
 }
 
