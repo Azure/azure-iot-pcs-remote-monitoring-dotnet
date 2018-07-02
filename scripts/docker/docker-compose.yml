@@ -94,6 +94,8 @@ services:
     image: azureiotpcs/pcs-config-dotnet:1.0.0-preview
     depends_on:
       - storageadapter
+      - telemetry
+      - devicesimulation
     ports:
       - "9005:9005"
     environment:
