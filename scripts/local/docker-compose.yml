@@ -53,9 +53,11 @@ services:
 
   iothubmanager:
     image: azureiotpcs/iothub-manager-dotnet:testing
+    depends_on:
+      - storageadapter
     environment:
       - PCS_IOTHUB_CONNSTRING
-      - PCS_CONFIG_WEBSERVICE_URL=http://config:9005/v1
+      - PCS_STORAGEADAPTER_WEBSERVICE_URL=http://storageadapter:9022/v1
       - PCS_AUTH_ISSUER
       - PCS_AUTH_AUDIENCE
       - PCS_AUTH_REQUIRED
@@ -98,12 +100,10 @@ services:
       - storageadapter
       - devicesimulation
       - telemetry
-      - iothubmanager
     environment:
       - PCS_STORAGEADAPTER_WEBSERVICE_URL=http://storageadapter:9022/v1
       - PCS_DEVICESIMULATION_WEBSERVICE_URL=http://devicesimulation:9003/v1
       - PCS_TELEMETRY_WEBSERVICE_URL=http://telemetry:9004/v1
-      - PCS_IOTHUBMANAGER_WEBSERVICE_URL=http://iothubmanager:9002/v1
       - PCS_AZUREMAPS_KEY
       - PCS_AUTH_ISSUER
       - PCS_AUTH_AUDIENCE
