@@ -2,6 +2,7 @@
 - [ ] Bug
 - [ ] New feature
 - [ ] Improvement
+- [ ] Question
 
 # Description <!-- Please provide a succinct description -->
 ...
