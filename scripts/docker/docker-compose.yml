@@ -13,7 +13,7 @@ version: "3"
 
 services:
   reverseproxy:
-    image: azureiotpcs/remote-monitoring-nginx:1.0.0-preview
+    image: azureiotpcs/remote-monitoring-nginx:1.0.0
     ports:
       - "10443:443"
     depends_on:
@@ -27,7 +27,7 @@ services:
       - /app/certs:/app/certs:ro
 
   webui:
-    image: azureiotpcs/pcs-remote-monitoring-webui:1.0.0-preview
+    image: azureiotpcs/pcs-remote-monitoring-webui:1.0.0
     ports:
       - "443:443"
     depends_on:
@@ -40,7 +40,7 @@ services:
       - /app/webui-config.js:/app/build/config.js:ro
 
   auth:
-    image: azureiotpcs/pcs-auth-dotnet:1.0.0-preview
+    image: azureiotpcs/pcs-auth-dotnet:1.0.0
     ports:
       - "9001:9001"
     environment:
@@ -49,7 +49,7 @@ services:
       - PCS_APPLICATION_SECRET
 
   iothubmanager:
-    image: azureiotpcs/iothub-manager-dotnet:1.0.0-preview
+    image: azureiotpcs/iothub-manager-dotnet:1.0.0
     depends_on:
       - storageadapter
     ports:
@@ -62,7 +62,7 @@ services:
       - PCS_STORAGEADAPTER_WEBSERVICE_URL=http://storageadapter:9022/v1
 
   devicesimulation:
-    image: azureiotpcs/device-simulation-dotnet:1.0.0-preview
+    image: azureiotpcs/device-simulation-dotnet:1.0.0
     depends_on:
       - storageadapter
     ports:
@@ -78,7 +78,7 @@ services:
       #- ./custom-data:/app/data:ro
 
   telemetry:
-    image: azureiotpcs/telemetry-dotnet:1.0.0-preview
+    image: azureiotpcs/telemetry-dotnet:1.0.0
     depends_on:
       - storageadapter
     ports:
@@ -91,9 +91,11 @@ services:
       - PCS_STORAGEADAPTER_WEBSERVICE_URL=http://storageadapter:9022/v1
 
   config:
-    image: azureiotpcs/pcs-config-dotnet:1.0.0-preview
+    image: azureiotpcs/pcs-config-dotnet:1.0.0
     depends_on:
       - storageadapter
+      - telemetry
+      - devicesimulation
     ports:
       - "9005:9005"
     environment:
@@ -106,7 +108,7 @@ services:
       - PCS_TELEMETRY_WEBSERVICE_URL=http://telemetry:9004/v1
 
   storageadapter:
-    image: azureiotpcs/pcs-storage-adapter-dotnet:1.0.0-preview
+    image: azureiotpcs/pcs-storage-adapter-dotnet:1.0.0
     ports:
       - "9022:9022"
     environment:
@@ -116,7 +118,7 @@ services:
       - PCS_APPLICATION_SECRET
 
   telemetryagent:
-    image: azureiotpcs/telemetry-agent-dotnet:1.0.0-preview
+    image: azureiotpcs/telemetry-agent-dotnet:1.0.0
     depends_on:
       - telemetry
       - iothubmanager
