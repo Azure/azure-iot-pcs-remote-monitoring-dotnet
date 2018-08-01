@@ -8,7 +8,7 @@
 # - note how this file references many environment variables, either set
 #   them in the .env file or edit this file adding the values here
 # - run `docker-compose up`
-# - open the browser at http://127.0.0.1:10443
+# - open the browser at http://127.0.0.1:8080
 #
 # For more information see
 # https://github.com/Azure/azure-iot-pcs-remote-monitoring-dotnet
@@ -54,7 +54,8 @@ services:
   iothubmanager:
     image: azureiotpcs/iothub-manager-dotnet:testing
     depends_on:
-      - storageadapter
+      - storageadapter      
+      - auth
     environment:
       - PCS_IOTHUB_CONNSTRING
       - PCS_STORAGEADAPTER_WEBSERVICE_URL=http://storageadapter:9022/v1
@@ -63,6 +64,7 @@ services:
       - PCS_AUTH_REQUIRED
       - PCS_CORS_WHITELIST
       - PCS_APPLICATION_SECRET
+      - PCS_AUTH_WEBSERVICE_URL=http://auth:9001/v1
 
   devicesimulation:
     image: azureiotpcs/device-simulation-dotnet:testing
