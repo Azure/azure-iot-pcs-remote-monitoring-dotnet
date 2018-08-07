@@ -4,24 +4,6 @@
 [submodule "webui"]
 	path = webui
 	url = https://github.com/Azure/azure-iot-pcs-remote-monitoring-webui.git
-[submodule "iothub-manager"]
-	path = iothub-manager
-	url = https://github.com/Azure/iothub-manager-dotnet.git
 [submodule "cli"]
 	path = cli
 	url = https://github.com/Azure/pcs-cli.git
-[submodule "storage-adapter"]
-	path = storage-adapter
-	url = https://github.com/Azure/pcs-storage-adapter-dotnet.git
-[submodule "config"]
-	path = config
-	url = https://github.com/Azure/pcs-config-dotnet.git
-[submodule "auth"]
-	path = auth
-	url = https://github.com/Azure/pcs-auth-dotnet.git
-[submodule "telemetry"]
-	path = telemetry
-	url = https://github.com/Azure/device-telemetry-dotnet.git
-[submodule "asa-manager"]
-	path = asa-manager
-	url = https://github.com/Azure/asa-manager-dotnet
