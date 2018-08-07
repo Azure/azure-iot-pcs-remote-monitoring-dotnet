@@ -7,3 +7,6 @@
 [submodule "cli"]
 	path = cli
 	url = https://github.com/Azure/pcs-cli.git
+[submodule "services"]
+	path = services
+	url = https://github.com/Azure/remote-monitoring-services-dotnet
