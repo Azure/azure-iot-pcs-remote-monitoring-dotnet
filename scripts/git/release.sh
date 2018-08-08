@@ -153,19 +153,19 @@ tag_build_publish_repo() {
 check_input
 
 # DOTNET Microservices
-tag_build_publish_repo auth               pcs-auth-dotnet
-tag_build_publish_repo config             pcs-config-dotnet
-tag_build_publish_repo device-simulation  device-simulation-dotnet
-tag_build_publish_repo iothub-manager     iothub-manager-dotnet
-tag_build_publish_repo storage-adapter    pcs-storage-adapter-dotnet
-tag_build_publish_repo telemetry          device-telemetry-dotnet               telemetry-dotnet
-tag_build_publish_repo asa-manager        asa-manager-dotnet
-tag_build_publish_repo webui              pcs-remote-monitoring-webui
+tag_build_publish_repo services/pcs-auth               pcs-auth-dotnet
+tag_build_publish_repo services/pcs-config             pcs-config-dotnet
+tag_build_publish_repo services/device-simulation      device-simulation-dotnet
+tag_build_publish_repo services/iothub-manager         iothub-manager-dotnet
+tag_build_publish_repo services/pcs-storage-adapter    pcs-storage-adapter-dotnet
+tag_build_publish_repo services/device-telemetry       device-telemetry-dotnet               telemetry-dotnet
+tag_build_publish_repo services/asa-manager            asa-manager-dotnet
+tag_build_publish_repo services/webui                  pcs-remote-monitoring-webui
 
 # PCS CLI
-tag_build_publish_repo cli                pcs-cli
+tag_build_publish_repo cli                             pcs-cli
 
 # Top Level repo
-tag_build_publish_repo reverse-proxy      azure-iot-pcs-remote-monitoring-dotnet remote-monitoring-nginx $DESCRIPTION
+tag_build_publish_repo reverse-proxy                   azure-iot-pcs-remote-monitoring-dotnet remote-monitoring-nginx $DESCRIPTION
 
 set +e
