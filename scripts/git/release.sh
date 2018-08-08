@@ -74,7 +74,7 @@ check_input() {
     echo $DOCKER_PWD | docker login -u $DOCKER_USER --password-stdin
 }
 
-tag_build_publish_repo() {
+tag_release_repo() {
     SUB_MODULE=$1
     REPO_NAME=$2
     DOCKER_CONTAINER_NAME=${3:-$2}
@@ -121,6 +121,22 @@ tag_build_publish_repo() {
     echo
     echo -e "${CYAN}====================================     End: Release for $REPO_NAME     ====================================${NC}"
     echo
+}
+
+publish_docker_containers()
+{
+    SUB_MODULE=$1
+    REPO_NAME=$2
+    DOCKER_CONTAINER_NAME=${3:-$2}
+
+    cd $APP_HOME$SUB_MODULE || failed $SUB_MODULE
+    if [ -n "$LOCAL" ]; then
+        echo "Cleaning the repo"
+        git reset --hard origin/master
+        git clean -xdf
+    fi
+    git checkout master
+    git pull --all --prune
 
     if [ -n "$SUB_MODULE" ] && [ "$REPO_NAME" != "pcs-cli" ]; then
         echo
@@ -149,23 +165,24 @@ tag_build_publish_repo() {
         docker push $TO_DOCKER_NAMESPACE/$DOCKER_CONTAINER_NAME:$VERSION
     fi
 }
-
 check_input
 
 # DOTNET Microservices
-tag_build_publish_repo services/pcs-auth               pcs-auth-dotnet
-tag_build_publish_repo services/pcs-config             pcs-config-dotnet
-tag_build_publish_repo services/device-simulation      device-simulation-dotnet
-tag_build_publish_repo services/iothub-manager         iothub-manager-dotnet
-tag_build_publish_repo services/pcs-storage-adapter    pcs-storage-adapter-dotnet
-tag_build_publish_repo services/device-telemetry       device-telemetry-dotnet               telemetry-dotnet
-tag_build_publish_repo services/asa-manager            asa-manager-dotnet
-tag_build_publish_repo services/webui                  pcs-remote-monitoring-webui
+publish_docker_containers services/auth                   pcs-auth-dotnet
+publish_docker_containers services/config                 pcs-config-dotnet
+publish_docker_containers services/device-simulation      device-simulation-dotnet
+publish_docker_containers services/iothub-manager         iothub-manager-dotnet
+publish_docker_containers services/storage-adapter        pcs-storage-adapter-dotnet
+publish_docker_containers services/device-telemetry       device-telemetry-dotnet               telemetry-dotnet
+publish_docker_containers services/asa-manager            asa-manager-dotnet
+publish_docker_containers services/webui                  pcs-remote-monitoring-webui
+
+tag_release_repo          services                        remote-monitoring-services-dotnet
 
 # PCS CLI
-tag_build_publish_repo cli                             pcs-cli
+tag_release_repo          cli                             pcs-cli
 
 # Top Level repo
-tag_build_publish_repo reverse-proxy                   azure-iot-pcs-remote-monitoring-dotnet remote-monitoring-nginx $DESCRIPTION
+publish_docker_containers reverse-proxy                   azure-iot-pcs-remote-monitoring-dotnet remote-monitoring-nginx $DESCRIPTION
 
 set +e
