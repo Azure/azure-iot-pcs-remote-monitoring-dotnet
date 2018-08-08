@@ -175,8 +175,9 @@ publish_docker_containers services/iothub-manager         iothub-manager-dotnet
 publish_docker_containers services/storage-adapter        pcs-storage-adapter-dotnet
 publish_docker_containers services/device-telemetry       device-telemetry-dotnet               telemetry-dotnet
 publish_docker_containers services/asa-manager            asa-manager-dotnet
-publish_docker_containers services/webui                  pcs-remote-monitoring-webui
+publish_docker_containers webui                           pcs-remote-monitoring-webui
 
+tag_release_repo          webui                           pcs-remote-monitoring-webui
 tag_release_repo          services                        remote-monitoring-services-dotnet
 
 # PCS CLI
