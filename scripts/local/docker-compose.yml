@@ -54,17 +54,17 @@ services:
   iothubmanager:
     image: azureiotpcs/iothub-manager-dotnet:testing
     depends_on:
-      - storageadapter      
       - auth
+      - storageadapter
     environment:
       - PCS_IOTHUB_CONNSTRING
       - PCS_STORAGEADAPTER_WEBSERVICE_URL=http://storageadapter:9022/v1
+      - PCS_AUTH_WEBSERVICE_URL=http://auth:9001/v1
       - PCS_AUTH_ISSUER
       - PCS_AUTH_AUDIENCE
       - PCS_AUTH_REQUIRED
       - PCS_CORS_WHITELIST
       - PCS_APPLICATION_SECRET
-      - PCS_AUTH_WEBSERVICE_URL=http://auth:9001/v1
 
   devicesimulation:
     image: azureiotpcs/device-simulation-dotnet:testing
@@ -86,10 +86,12 @@ services:
   telemetry:
     image: azureiotpcs/telemetry-dotnet:testing
     depends_on:
+      - auth
       - storageadapter
     environment:
       - PCS_TELEMETRY_DOCUMENTDB_CONNSTRING
       - PCS_STORAGEADAPTER_WEBSERVICE_URL=http://storageadapter:9022/v1
+      - PCS_AUTH_WEBSERVICE_URL=http://auth:9001/v1
       - PCS_AUTH_ISSUER
       - PCS_AUTH_AUDIENCE
       - PCS_AUTH_REQUIRED
@@ -99,6 +101,7 @@ services:
   config:
     image: azureiotpcs/pcs-config-dotnet:testing
     depends_on:
+      - auth
       - storageadapter
       - devicesimulation
       - telemetry
@@ -107,6 +110,7 @@ services:
       - PCS_DEVICESIMULATION_WEBSERVICE_URL=http://devicesimulation:9003/v1
       - PCS_TELEMETRY_WEBSERVICE_URL=http://telemetry:9004/v1
       - PCS_AZUREMAPS_KEY
+      - PCS_AUTH_WEBSERVICE_URL=http://auth:9001/v1
       - PCS_AUTH_ISSUER
       - PCS_AUTH_AUDIENCE
       - PCS_AUTH_REQUIRED
