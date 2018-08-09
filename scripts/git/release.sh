@@ -77,8 +77,7 @@ check_input() {
 tag_release_repo() {
     SUB_MODULE=$1
     REPO_NAME=$2
-    DOCKER_CONTAINER_NAME=${3:-$2}
-    DESCRIPTION=$4
+    DESCRIPTION=$3
 
     echo
     echo -e "${CYAN}====================================     Start: Tagging the $REPO_NAME repo     ====================================${NC}"
@@ -126,8 +125,7 @@ tag_release_repo() {
 publish_docker_containers()
 {
     SUB_MODULE=$1
-    REPO_NAME=$2
-    DOCKER_CONTAINER_NAME=${3:-$2}
+    DOCKER_CONTAINER_NAME=$2
 
     cd $APP_HOME$SUB_MODULE || failed $SUB_MODULE
     if [ -n "$LOCAL" ]; then
@@ -138,9 +136,9 @@ publish_docker_containers()
     git checkout master
     git pull --all --prune
 
-    if [ -n "$SUB_MODULE" ] && [ "$REPO_NAME" != "pcs-cli" ]; then
+    if [ -n "$SUB_MODULE" ]; then
         echo
-        echo -e "${CYAN}====================================     Start: Building $REPO_NAME     ====================================${NC}"
+        echo -e "${CYAN}====================================     Start: Building $DOCKER_CONTAINER_NAME     ====================================${NC}"
         echo
 
         BUILD_PATH="scripts/docker/build"
@@ -152,7 +150,7 @@ publish_docker_containers()
         /bin/bash $APP_HOME$SUB_MODULE/$BUILD_PATH
 
         echo
-        echo -e "${CYAN}====================================     End: Building $REPO_NAME     ====================================${NC}"
+        echo -e "${CYAN}====================================     End: Building $DOCKER_CONTAINER_NAME     ====================================${NC}"
         echo
         
         # Tag containers
@@ -167,23 +165,24 @@ publish_docker_containers()
 }
 check_input
 
-# DOTNET Microservices
+# Publish DOTNET Microservices docker containers
 publish_docker_containers services/auth                   pcs-auth-dotnet
 publish_docker_containers services/config                 pcs-config-dotnet
 publish_docker_containers services/device-simulation      device-simulation-dotnet
 publish_docker_containers services/iothub-manager         iothub-manager-dotnet
 publish_docker_containers services/storage-adapter        pcs-storage-adapter-dotnet
-publish_docker_containers services/device-telemetry       device-telemetry-dotnet               telemetry-dotnet
+publish_docker_containers services/device-telemetry       telemetry-dotnet
 publish_docker_containers services/asa-manager            asa-manager-dotnet
 publish_docker_containers webui                           pcs-remote-monitoring-webui
+# Top Level repo
+publish_docker_containers reverse-proxy                   remote-monitoring-nginx
 
+# Release and Tag all the repositories with latest version
 tag_release_repo          webui                           pcs-remote-monitoring-webui
 tag_release_repo          services                        remote-monitoring-services-dotnet
-
 # PCS CLI
 tag_release_repo          cli                             pcs-cli
-
 # Top Level repo
-publish_docker_containers reverse-proxy                   azure-iot-pcs-remote-monitoring-dotnet remote-monitoring-nginx $DESCRIPTION
+tag_release_repo          ""                              azure-iot-pcs-remote-monitoring-dotnet $DESCRIPTION
 
 set +e
