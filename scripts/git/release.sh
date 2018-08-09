@@ -124,60 +124,63 @@ tag_release_repo() {
 
 publish_docker_containers()
 {
-    SUB_MODULE=$1
-    DOCKER_CONTAINER_NAME=$2
+    DOCKER_CONTAINER_NAME=$1
+    SUB_MODULE=$2
 
-    cd $APP_HOME$SUB_MODULE || failed $SUB_MODULE
-    if [ -n "$LOCAL" ]; then
-        echo "Cleaning the repo"
-        git reset --hard origin/master
-        git clean -xdf
-    fi
-    git checkout master
-    git pull --all --prune
+    if [ "$SUB_MODULE" == "reverse-proxy" ]; then
+        cd $APP_HOME$SUB_MODULE || failed $SUB_MODULE
+        if [ -n "$LOCAL" ]; then
+            echo "Cleaning the repo"
+            git reset --hard origin/master
+            git clean -xdf
+        fi
+        git checkout master
+        git pull --all --prune
 
-    if [ -n "$SUB_MODULE" ]; then
         echo
         echo -e "${CYAN}====================================     Start: Building $DOCKER_CONTAINER_NAME     ====================================${NC}"
         echo
 
-        BUILD_PATH="scripts/docker/build"
-        if [ "$SUB_MODULE" == "reverse-proxy" ]; then 
-            BUILD_PATH="build"
-        fi
-
+        BUILD_PATH="build"
         # Building docker containers
         /bin/bash $APP_HOME$SUB_MODULE/$BUILD_PATH
-
+        
         echo
         echo -e "${CYAN}====================================     End: Building $DOCKER_CONTAINER_NAME     ====================================${NC}"
         echo
-        
-        # Tag containers
-        echo -e "${CYAN}Tagging $FROM_DOCKER_NAMESPACE/$DOCKER_CONTAINER_NAME:$DOCKER_TAG ==> $TO_DOCKER_NAMESPACE/$DOCKER_CONTAINER_NAME:$VERSION${NC}"
+    else
+        # Pull containers
+        echo -e "${CYAN}Pulling $FROM_DOCKER_NAMESPACE/$DOCKER_CONTAINER_NAME:$DOCKER_TAG${NC}"
         echo
-        docker tag $FROM_DOCKER_NAMESPACE/$DOCKER_CONTAINER_NAME:$DOCKER_TAG  $TO_DOCKER_NAMESPACE/$DOCKER_CONTAINER_NAME:$VERSION
-
-        # Push containers
-        echo -e "${CYAN}Pusing container $TO_DOCKER_NAMESPACE/$DOCKER_CONTAINER_NAME:$VERSION${NC}"
-        docker push $TO_DOCKER_NAMESPACE/$DOCKER_CONTAINER_NAME:$VERSION
+        docker pull $FROM_DOCKER_NAMESPACE/$DOCKER_CONTAINER_NAME:$DOCKER_TAG
     fi
+    
+    # Tag containers
+    echo -e "${CYAN}Tagging $FROM_DOCKER_NAMESPACE/$DOCKER_CONTAINER_NAME:$DOCKER_TAG ==> $TO_DOCKER_NAMESPACE/$DOCKER_CONTAINER_NAME:$VERSION${NC}"
+    echo
+    docker tag $FROM_DOCKER_NAMESPACE/$DOCKER_CONTAINER_NAME:$DOCKER_TAG  $TO_DOCKER_NAMESPACE/$DOCKER_CONTAINER_NAME:$VERSION
+
+    # Push containers
+    echo -e "${CYAN}Pusing container $TO_DOCKER_NAMESPACE/$DOCKER_CONTAINER_NAME:$VERSION${NC}"
+    docker push $TO_DOCKER_NAMESPACE/$DOCKER_CONTAINER_NAME:$VERSION
 }
+
 check_input
 
 # Publish DOTNET Microservices docker containers
-publish_docker_containers services/auth                   pcs-auth-dotnet
-publish_docker_containers services/config                 pcs-config-dotnet
-publish_docker_containers services/device-simulation      device-simulation-dotnet
-publish_docker_containers services/iothub-manager         iothub-manager-dotnet
-publish_docker_containers services/storage-adapter        pcs-storage-adapter-dotnet
-publish_docker_containers services/device-telemetry       telemetry-dotnet
-publish_docker_containers services/asa-manager            asa-manager-dotnet
-publish_docker_containers webui                           pcs-remote-monitoring-webui
+publish_docker_containers pcs-auth-dotnet
+publish_docker_containers pcs-config-dotnet
+publish_docker_containers device-simulation-dotnet
+publish_docker_containers iothub-manager-dotnet
+publish_docker_containers pcs-storage-adapter-dotnet
+publish_docker_containers telemetry-dotnet
+publish_docker_containers asa-manager-dotnet
+publish_docker_containers pcs-remote-monitoring-webui
+publish_docker_containers pcs-diagnostics-dotnet
 # Top Level repo
-publish_docker_containers reverse-proxy                   remote-monitoring-nginx
+publish_docker_containers remote-monitoring-nginx       reverse-proxy
 
-# Release and Tag all the repositories with latest version
+# # Release and Tag all the repositories with latest version
 tag_release_repo          webui                           pcs-remote-monitoring-webui
 tag_release_repo          services                        remote-monitoring-services-dotnet
 # PCS CLI
