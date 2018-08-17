@@ -51,19 +51,19 @@ The docker build scripts require environment variables to be set up before execu
 
 2) WebService  
 It contains code for REST endpoints of the microservice.
-
 &nbsp;  
+
 3) Service  
 It contains business logic and code interfacing various SDKs. 
 
 &nbsp; 
 4) WebService.Test  
 It contains unit tests for the REST endpoints of the microservice. 
-
 &nbsp; 
+
 5) Service  
 It contains unit tests for the business logic and code interfacing various SDKs.
-
 &nbsp;  
+
 6) Other Projects
 The microservice might contain other projects like RecurringTaskAgent etc.
