@@ -1,4 +1,4 @@
-[![Build][build-badge]][build-url]
+[![Build status](https://solutionaccelerators.visualstudio.com/RemoteMonitoring/_apis/build/status/Consolidated%20Repo)](https://solutionaccelerators.visualstudio.com/RemoteMonitoring/_build/latest?definitionId=22)
 [![Issues][issues-badge]][issues-url]
 [![Gitter][gitter-badge]][gitter-url]
 
@@ -63,13 +63,7 @@ Architecture Overview
 ## Components
 * [Remote Monitoring Web UI](https://github.com/Azure/pcs-remote-monitoring-webui)
 * [Command Line Interface (CLI)](https://github.com/Azure/pcs-cli)
-* [IoT Hub manager](https://github.com/Azure/iothub-manager-dotnet)
-* [User Management](https://github.com/Azure/pcs-auth-dotnet)
-* [Device Simulation](https://github.com/Azure/device-simulation-dotnet)
-* [Telemetry](https://github.com/Azure/device-telemetry-dotnet)
-* [ASA Manager](https://github.com/Azure/asa-manager-dotnet)
-* [Configuration](https://github.com/azure/pcs-config-dotnet)
-* [Storage Adapter](https://github.com/azure/pcs-storage-adapter-dotnet)
+* [Micro Services](https://github.com/Azure/remote-monitoring-services-dotnet)
 * [Application Gateway (SSL Proxy WebApp)](https://github.com/Azure/reverse-proxy-dotnet)
 * [API Gateway](https://github.com/Azure/azure-iot-pcs-remote-monitoring-dotnet/tree/master/reverse-proxy)
 
