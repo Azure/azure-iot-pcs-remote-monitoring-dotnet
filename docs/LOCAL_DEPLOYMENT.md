@@ -38,9 +38,9 @@ Each microservice comprises of following projects/folders.
 
 Description: 
 1) Scripts  
-The scripts folder is organized as follows : 
-i. **docker** sub folder for building docker containers of the current microservice. 
-ii. **root** folder contains scripts for building and running services natively.
+The scripts folder is organized as follows\
+i. **docker** sub folder for building docker containers of the current microservice.\
+ii. **root** folder contains scripts for building and running services natively.\
 &nbsp; 
 ![script folder structure](https://user-images.githubusercontent.com/39531904/44290937-10df4e00-a230-11e8-9cd4-a9c0644e166b.PNG)
 &nbsp; 
