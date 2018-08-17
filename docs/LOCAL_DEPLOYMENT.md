@@ -1,11 +1,11 @@
 
 Local Deployment
 ================
-#### Overview
+### Overview
 This document and other documents, referenced here, contain steps to git clone the latest repository, deploying the microservices locally and also a walk through the general repository and microservice structure.
 &nbsp; 
-#### Steps to clone the restructured repository
-###### If you have an existing cloned repository
+### Steps to clone the restructured repository
+##### If you have an existing cloned repository
 1) Use recurssive clone to clone the repository and the sub-modules.
 ````console
 #### For git version 2.17.1
@@ -20,15 +20,15 @@ Submodule 'webui' (https://github.com/Azure/azure-iot-pcs-remote-monitoring-webu
 ````
 2) It is safe to delete exisiting microservice folders (except for services folder) under the top-level of the repository. 
 &nbsp; 
-###### If you have donot have an existing cloned repository
+##### If you have donot have an existing cloned repository
 1) Follow the step 1  of "existing cloned repo". You will not require to delete anything. Ensure you have services sub-module, which contains all the microservices.
 &nbsp; 
-#### Steps to deploy the microservices locally
+### Steps to deploy the microservices locally
 Follow the documentation [here](https://github.com/Azure/remote-monitoring-services-dotnet).
 &nbsp; 
-#### Structure of repository and microservices
-##### Repository
-##### Microservices
+### Structure of repository and microservices
+#### Repository
+#### Microservices
 Each microservice comprises of following projects/folders. 
 1) scripts 
 2) WebService  
