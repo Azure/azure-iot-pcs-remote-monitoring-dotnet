@@ -41,7 +41,8 @@ Description:
 The scripts folder is organized as follows\
 i. **docker** sub folder for building docker containers of the current microservice.\
 ii. **root** folder contains scripts for building and running services natively.\
-&nbsp; 
+&nbsp;
+
 ![script folder structure](https://user-images.githubusercontent.com/39531904/44290937-10df4e00-a230-11e8-9cd4-a9c0644e166b.PNG)\
 &nbsp; 
 
@@ -52,21 +53,17 @@ The docker build scripts require environment variables to be set up before execu
 It contains code for REST endpoints of the microservice.
 
 &nbsp;  
-
 3) Service  
 It contains business logic and code interfacing various SDKs. 
 
 &nbsp; 
-
 4) WebService.Test  
 It contains unit tests for the REST endpoints of the microservice. 
 
 &nbsp; 
-
 5) Service  
 It contains unit tests for the business logic and code interfacing various SDKs.
 
 &nbsp;  
-
 6) Other Projects
 The microservice might contain other projects like RecurringTaskAgent etc.
