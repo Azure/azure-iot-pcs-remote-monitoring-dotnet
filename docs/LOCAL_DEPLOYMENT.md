@@ -6,7 +6,7 @@ This document and other documents, referenced here, contain steps to git clone t
 &nbsp; 
 ### Steps to clone the restructured repository
 #### If you have an existing cloned repository
-1) Use recurssive clone to clone the repository and the sub-modules.
+1) Use recursive clone to clone the repository and the sub-modules.
 ````console
 #### For git version 2.17.1
 abc@pcs git clone --recurse-submodules  https://github.com/Azure/azure-iot-pcs-remote-monitoring-dotnet.git
@@ -18,9 +18,9 @@ Submodule 'services' (https://github.com/Azure/remote-monitoring-services-dotnet
 Submodule 'webui' (https://github.com/Azure/azure-iot-pcs-remote-monitoring-webui.git) registered for path 'webui'
 .....
 ````
-2) It is safe to delete exisiting microservice folders (except for services folder) under the top-level of the repository. 
+2) It is safe to delete existing microservice folders (except for services folder) under the top-level of the repository. Please do not delete web-ui, cli and reverse-proxy folders.
 &nbsp; 
-#### If you have donot have an existing cloned repository
+#### If you have do not have an existing cloned repository
 1) Follow the step 1  of "existing cloned repo". You will not require to delete anything. Ensure you have services sub-module, which contains all the microservices.
 &nbsp; 
 ### Steps to deploy the microservices locally
@@ -43,8 +43,7 @@ i. **docker** sub folder for building docker containers of the current microserv
 ii. **root** folder contains scripts for building and running services natively.\
 &nbsp; 
 ![script folder structure](https://user-images.githubusercontent.com/39531904/44290937-10df4e00-a230-11e8-9cd4-a9c0644e166b.PNG "Caption")\
-&nbsp; 
-The docker build scripts require environment variables to be set up before execution. The run scripts can run both natively built and dockerized microservice. The run script under docker folder can also be independently used to pull and run published docker images. One can modify the tag and the account to pull different version or privately built docker images.
+&nbsp;The docker build scripts require environment variables to be set up before execution. The run scripts can run both natively built and dockerized microservice. The run script under docker folder can also be independently used to pull and run published docker images. One can modify the tag and the account to pull different version or privately built docker images.
 &nbsp; 
 
 2) WebService  
@@ -64,4 +63,5 @@ It contains unit tests for the business logic and code interfacing various SDKs.
 &nbsp;  
 
 6) Other Projects
-The microservice might contain other projects like RecurringTaskAgent etc.
+The microservice might contain other projects such as RecurringTaskAgent etc.
+
