@@ -62,6 +62,6 @@ It contains unit tests for the REST endpoints of the microservice.
 It contains unit tests for the business logic and code interfacing various SDKs.
 &nbsp;  
 
-6) Other Projects
+6) Other Projects 
 The microservice might contain other projects such as RecurringTaskAgent etc.
 
