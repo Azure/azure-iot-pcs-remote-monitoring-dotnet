@@ -1,4 +1,4 @@
-[![Build status](https://solutionaccelerators.visualstudio.com/RemoteMonitoring/_apis/build/status/Consolidated%20Repo)](https://solutionaccelerators.visualstudio.com/RemoteMonitoring/_build/latest?definitionId=22)
+[![Build status][build-badge]][build-url]
 [![Issues][issues-badge]][issues-url]
 [![Gitter][gitter-badge]][gitter-url]
 
@@ -64,7 +64,7 @@ Architecture Overview
 ## Components
 * [Remote Monitoring Web UI](https://github.com/Azure/pcs-remote-monitoring-webui)
 * [Command Line Interface (CLI)](https://github.com/Azure/pcs-cli)
-* [Micro Services](https://github.com/Azure/remote-monitoring-services-dotnet)
+* [Microservices](https://github.com/Azure/remote-monitoring-services-dotnet)
 * [Application Gateway (SSL Proxy WebApp)](https://github.com/Azure/reverse-proxy-dotnet)
 * [API Gateway](https://github.com/Azure/azure-iot-pcs-remote-monitoring-dotnet/tree/master/reverse-proxy)
 
@@ -88,8 +88,8 @@ License
 Copyright (c) Microsoft Corporation. All rights reserved.
 Licensed under the [MIT](LICENSE) License.
 
-[build-badge]: https://img.shields.io/travis/Azure/azure-iot-pcs-remote-monitoring-dotnet.svg
-[build-url]: https://travis-ci.org/Azure/azure-iot-pcs-remote-monitoring-dotnet
+[build-badge]: https://solutionaccelerators.visualstudio.com/RemoteMonitoring/_apis/build/status/Consolidated%20Repo
+[build-url]: https://solutionaccelerators.visualstudio.com/RemoteMonitoring/_build/latest?definitionId=22
 [issues-badge]: https://img.shields.io/github/issues/azure/azure-iot-pcs-remote-monitoring-dotnet.svg
 [issues-url]: https://github.com/azure/azure-iot-pcs-remote-monitoring-dotnet/issues
 [gitter-badge]: https://img.shields.io/gitter/room/azure/iot-solutions.js.svg
