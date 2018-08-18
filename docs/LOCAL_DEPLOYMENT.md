@@ -43,7 +43,7 @@ i. **docker** sub folder for building docker containers of the current microserv
 ii. **root** folder contains scripts for building and running services natively.\
 &nbsp; 
 ![script folder structure](https://user-images.githubusercontent.com/39531904/44290937-10df4e00-a230-11e8-9cd4-a9c0644e166b.PNG "Caption")\
-&nbsp;The docker build scripts require environment variables to be set up before execution. The run scripts can run both natively built and dockerized microservice. The run script under docker folder can also be independently used to pull and run published docker images. One can modify the tag and the account to pull different version or privately built docker images.
+The docker build scripts require environment variables to be set up before execution. The run scripts can run both natively built and dockerized microservice. The run script under docker folder can also be independently used to pull and run published docker images. One can modify the tag and the account to pull different version or privately built docker images.
 &nbsp; 
 
 2) WebService  
@@ -62,6 +62,6 @@ It contains unit tests for the REST endpoints of the microservice.
 It contains unit tests for the business logic and code interfacing various SDKs.
 &nbsp;  
 
-6) Other Projects 
+6) Other Projects  
 The microservice might contain other projects such as RecurringTaskAgent etc.
 
