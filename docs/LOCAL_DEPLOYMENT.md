@@ -26,42 +26,40 @@ Submodule 'webui' (https://github.com/Azure/azure-iot-pcs-remote-monitoring-webu
 ### Steps to deploy the microservices locally
 Follow the documentation [here](https://github.com/Azure/remote-monitoring-services-dotnet).
 &nbsp; 
-### Structure of repository and microservices
+
+Structure of repository
+=====
 #### Repository
-#### Microservices
-Each microservice comprises of following projects/folders. 
+The .Net comprises of following projects/folders. 
 1) scripts 
-2) WebService  
-3) Service  
-4) WebService.Test  
-5) Service.Test
+2) cli 
+3) services  
+4) webui   
+5) reverse-proxy
 
 Description: 
 1) Scripts  
 The scripts folder is organized as follows\
-i. **docker** sub folder for building docker containers of the current microservice.\
-ii. **root** folder contains scripts for building and running services natively.\
+i. **docker** scripts to deploy "released" tagged containers using docker-compose.\
+ii. **local** scripts to deploy "testing" tagged containers using docker-compose.\
+iii. **iothub** scripts to deploy create azure iot hub.\
 &nbsp; 
-![script folder structure](https://user-images.githubusercontent.com/39531904/44290937-10df4e00-a230-11e8-9cd4-a9c0644e166b.PNG "Caption")\
-The docker build scripts require environment variables to be set up before execution. The run scripts can run both natively built and dockerized microservice. The run script under docker folder can also be independently used to pull and run published docker images. One can modify the tag and the account to pull different version or privately built docker images.
+![top-level-scripts](https://user-images.githubusercontent.com/39531904/44433416-f4f2e980-a55a-11e8-8e3b-fc784788da58.PNG)\
+The docker build scripts require environment variables to be set before execution. 
 &nbsp; 
 
-2) WebService  
-It contains code for REST endpoints of the microservice.
+2) Cli  
+This submodule contains cli source code, which can be used to deploy azure resources or create basic or standard deployments of the product 
 &nbsp;  
 
-3) Service  
-It contains business logic and code interfacing various SDKs. 
+3) Services 
+This submodule is link to the repository containing all the microservices.  
 &nbsp;
 
-4) WebService.Test  
-It contains unit tests for the REST endpoints of the microservice. 
+4) Webui
+This submodule is a link to ui component of the project. 
 &nbsp; 
 
-5) Service  
-It contains unit tests for the business logic and code interfacing various SDKs.
+5) Reverse-proxy  
+This submodule is a link to the repository containing preconfigured nginx used as a load balancer. 
 &nbsp;  
-
-6) Other Projects  
-The microservice might contain other projects such as RecurringTaskAgent etc.
-
