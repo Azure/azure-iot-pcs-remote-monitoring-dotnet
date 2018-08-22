@@ -27,9 +27,7 @@ Submodule 'webui' (https://github.com/Azure/azure-iot-pcs-remote-monitoring-webu
 Follow the documentation [here](https://github.com/Azure/remote-monitoring-services-dotnet).
 &nbsp; 
 
-Structure of repository
-=====
-#### Repository
+## Structure of repository
 The .Net comprises of following projects/folders. 
 1) scripts 
 2) cli 

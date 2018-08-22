@@ -74,11 +74,10 @@ check_input() {
     echo $DOCKER_PWD | docker login -u $DOCKER_USER --password-stdin
 }
 
-tag_build_publish_repo() {
+tag_release_repo() {
     SUB_MODULE=$1
     REPO_NAME=$2
-    DOCKER_CONTAINER_NAME=${3:-$2}
-    DESCRIPTION=$4
+    DESCRIPTION=$3
 
     echo
     echo -e "${CYAN}====================================     Start: Tagging the $REPO_NAME repo     ====================================${NC}"
@@ -121,51 +120,72 @@ tag_build_publish_repo() {
     echo
     echo -e "${CYAN}====================================     End: Release for $REPO_NAME     ====================================${NC}"
     echo
+}
 
-    if [ -n "$SUB_MODULE" ] && [ "$REPO_NAME" != "pcs-cli" ]; then
-        echo
-        echo -e "${CYAN}====================================     Start: Building $REPO_NAME     ====================================${NC}"
-        echo
+publish_docker_containers()
+{
+    DOCKER_CONTAINER_NAME=$1
+    SUB_MODULE=$2
 
-        BUILD_PATH="scripts/docker/build"
-        if [ "$SUB_MODULE" == "reverse-proxy" ]; then 
-            BUILD_PATH="build"
+    if [ "$SUB_MODULE" == "reverse-proxy" ]; then
+        cd $APP_HOME$SUB_MODULE || failed $SUB_MODULE
+        if [ -n "$LOCAL" ]; then
+            echo "Cleaning the repo"
+            git reset --hard origin/master
+            git clean -xdf
         fi
+        git checkout master
+        git pull --all --prune
 
+        echo
+        echo -e "${CYAN}====================================     Start: Building $DOCKER_CONTAINER_NAME     ====================================${NC}"
+        echo
+
+        BUILD_PATH="build"
         # Building docker containers
         /bin/bash $APP_HOME$SUB_MODULE/$BUILD_PATH
-
-        echo
-        echo -e "${CYAN}====================================     End: Building $REPO_NAME     ====================================${NC}"
-        echo
         
-        # Tag containers
-        echo -e "${CYAN}Tagging $FROM_DOCKER_NAMESPACE/$DOCKER_CONTAINER_NAME:$DOCKER_TAG ==> $TO_DOCKER_NAMESPACE/$DOCKER_CONTAINER_NAME:$VERSION${NC}"
         echo
-        docker tag $FROM_DOCKER_NAMESPACE/$DOCKER_CONTAINER_NAME:$DOCKER_TAG  $TO_DOCKER_NAMESPACE/$DOCKER_CONTAINER_NAME:$VERSION
-
-        # Push containers
-        echo -e "${CYAN}Pusing container $TO_DOCKER_NAMESPACE/$DOCKER_CONTAINER_NAME:$VERSION${NC}"
-        docker push $TO_DOCKER_NAMESPACE/$DOCKER_CONTAINER_NAME:$VERSION
+        echo -e "${CYAN}====================================     End: Building $DOCKER_CONTAINER_NAME     ====================================${NC}"
+        echo
+    else
+        # Pull containers
+        echo -e "${CYAN}Pulling $FROM_DOCKER_NAMESPACE/$DOCKER_CONTAINER_NAME:$DOCKER_TAG${NC}"
+        echo
+        docker pull $FROM_DOCKER_NAMESPACE/$DOCKER_CONTAINER_NAME:$DOCKER_TAG
     fi
+    
+    # Tag containers
+    echo -e "${CYAN}Tagging $FROM_DOCKER_NAMESPACE/$DOCKER_CONTAINER_NAME:$DOCKER_TAG ==> $TO_DOCKER_NAMESPACE/$DOCKER_CONTAINER_NAME:$VERSION${NC}"
+    echo
+    docker tag $FROM_DOCKER_NAMESPACE/$DOCKER_CONTAINER_NAME:$DOCKER_TAG  $TO_DOCKER_NAMESPACE/$DOCKER_CONTAINER_NAME:$VERSION
+
+    # Push containers
+    echo -e "${CYAN}Pusing container $TO_DOCKER_NAMESPACE/$DOCKER_CONTAINER_NAME:$VERSION${NC}"
+    docker push $TO_DOCKER_NAMESPACE/$DOCKER_CONTAINER_NAME:$VERSION
 }
 
 check_input
 
-# DOTNET Microservices
-tag_build_publish_repo auth               pcs-auth-dotnet
-tag_build_publish_repo config             pcs-config-dotnet
-tag_build_publish_repo device-simulation  device-simulation-dotnet
-tag_build_publish_repo iothub-manager     iothub-manager-dotnet
-tag_build_publish_repo storage-adapter    pcs-storage-adapter-dotnet
-tag_build_publish_repo telemetry          device-telemetry-dotnet               telemetry-dotnet
-tag_build_publish_repo asa-manager        asa-manager-dotnet
-tag_build_publish_repo webui              pcs-remote-monitoring-webui
-
-# PCS CLI
-tag_build_publish_repo cli                pcs-cli
-
+# Publish DOTNET Microservices docker containers
+publish_docker_containers pcs-auth-dotnet
+publish_docker_containers pcs-config-dotnet
+publish_docker_containers device-simulation-dotnet
+publish_docker_containers iothub-manager-dotnet
+publish_docker_containers pcs-storage-adapter-dotnet
+publish_docker_containers telemetry-dotnet
+publish_docker_containers asa-manager-dotnet
+publish_docker_containers pcs-remote-monitoring-webui
+publish_docker_containers pcs-diagnostics-dotnet
 # Top Level repo
-tag_build_publish_repo reverse-proxy      azure-iot-pcs-remote-monitoring-dotnet remote-monitoring-nginx $DESCRIPTION
+publish_docker_containers remote-monitoring-nginx       reverse-proxy
+
+# # Release and Tag all the repositories with latest version
+tag_release_repo          webui                           pcs-remote-monitoring-webui
+tag_release_repo          services                        remote-monitoring-services-dotnet
+# PCS CLI
+tag_release_repo          cli                             pcs-cli
+# Top Level repo
+tag_release_repo          ""                              azure-iot-pcs-remote-monitoring-dotnet $DESCRIPTION
 
 set +e
