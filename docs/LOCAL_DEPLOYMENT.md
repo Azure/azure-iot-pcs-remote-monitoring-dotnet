@@ -28,7 +28,7 @@ Follow the documentation [here](https://github.com/Azure/remote-monitoring-servi
 &nbsp; 
 
 ## Structure of repository
-The .Net comprises of following projects/folders. 
+The repository comprises of following projects/submodules. 
 1) scripts 
 2) cli 
 3) services  
