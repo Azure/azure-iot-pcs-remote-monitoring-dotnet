@@ -46,18 +46,14 @@ iii. **iothub** scripts to deploy create azure iot hub.\
 The docker build scripts require environment variables to be set before execution. 
 &nbsp; 
 
-2) [Cli](https://github.com/Azure/pcs-cli)  
-This submodule contains cli source code, which can be used to deploy azure resources or create basic or standard deployments of the product 
+2) [CLI](https://github.com/Azure/pcs-cli): This submodule contains cli source code, which can be used to deploy azure resources or create basic or standard deployments of the product.
 &nbsp;  
 
-3) [Services](https://github.com/Azure/remote-monitoring-services-java) 
-This submodule is link to the repository containing all the microservices.  
+3) [Services](https://github.com/Azure/remote-monitoring-services-java): This submodule is link to the repository containing all the microservices.  
 &nbsp;
 
-4) [Webui](https://github.com/Azure/pcs-remote-monitoring-webui)
-This submodule is a link to ui component of the project. 
+4) [Webui](https://github.com/Azure/pcs-remote-monitoring-webui): This submodule is a link to ui component of the project. 
 &nbsp;  
 
-5) [Reverse-proxy](https://github.com/Azure/azure-iot-pcs-remote-monitoring-dotnet/tree/master/reverse-proxy)  
-This submodule is a link to the repository containing preconfigured nginx used as a load balancer. 
+5) [Reverse-proxy](https://github.com/Azure/azure-iot-pcs-remote-monitoring-dotnet/tree/master/reverse-proxy): This submodule is a link to the repository containing preconfigured nginx used as a load balancer. 
 &nbsp;  
