@@ -47,7 +47,7 @@ The docker build scripts require environment variables to be set before executio
 
 2) [CLI](https://github.com/Azure/pcs-cli): This submodule contains cli source code, which can be used to deploy azure resources or create basic or standard deployments of the product.  
 
-3) [Services](https://github.com/Azure/remote-monitoring-services-java): This submodule is link to the repository containing all the microservices.  
+3) [Services](https://github.com/Azure/remote-monitoring-services-java): This submodule is a link to the repository containing all the microservices.  
 
 4) [Webui](https://github.com/Azure/pcs-remote-monitoring-webui): This submodule is a link to ui component of the project. 
 &nbsp;  
