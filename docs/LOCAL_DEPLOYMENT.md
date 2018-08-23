@@ -18,7 +18,15 @@ Submodule 'services' (https://github.com/Azure/remote-monitoring-services-dotnet
 Submodule 'webui' (https://github.com/Azure/azure-iot-pcs-remote-monitoring-webui.git) registered for path 'webui'
 .....
 ````
-2) It is safe to delete existing microservice folders (except for services folder) under the top-level of the repository. Please do not delete web-ui, cli and reverse-proxy folders.
+2) Update submodules
+````console
+abs@pcs git submodule update --recursive --remote
+Submodule path 'cli': checked out '0ff9bad05c5a12df572ab45c07ac903bfd9fe58e'
+Submodule path 'device-simulation': checked out 'a7ef4c3d243cc2aa98f0f69029b2eb74bc9067d4'
+Submodule path 'services': checked out '11f025f25f86dadb4eb07c58ce0623b09cadb585'
+.....
+````
+3) It is safe to delete existing microservice folders (except for services folder) under the top-level of the repository. Please do not delete web-ui, cli and reverse-proxy folders.
 &nbsp; 
 #### If you have do not have an existing cloned repository
 1) Follow the step 1  of "existing cloned repo". You will not require to delete anything. Ensure you have services sub-module, which contains all the microservices.
