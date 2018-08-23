@@ -10,7 +10,7 @@ Remote Monitoring Solution with Azure IoT
 
 Overview
 ========
-> There is a Java version of this repo available [here](https://github.com/Azure/azure-iot-pcs-remote-monitoring-java)
+> There is a Java version of this repo available [here](https://github.com/Azure/azure-iot-pcs-remote-monitoring-dotnet)
 
 Remote monitoring helps you get better visibility into your devices, assets, and
 sensors wherever they happen to be located. You can collect and analyze real-time
