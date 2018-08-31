@@ -1,7 +1,7 @@
 Setting Up Azure Dev Spaces for Remote Monitoring Services
 ==========================================================
 
-The following should be done for any of the Remote Monitoring web services where you'd like to use [Azure Dev Spaces][azds] with Visual Studio. Examples below use `asamanager` as the microservice, but similar steps would be used for other services.
+The following should be done for any of the Remote Monitoring web services where you'd like to use [Azure Dev Spaces][azds] with Visual Studio. This document uses `asamanager` as the microservice, but similar steps would be used for other services.
 
 *Remember that [Azure Dev Spaces][azds] is in preview and subject to change.*
 
@@ -98,7 +98,7 @@ As part of the [Azure Dev Spaces][azds] set up, files are added to the `WebServi
         ENTRYPOINT  ["sh", "/src/asa-manager/WebService/azds_entrypoint.sh"]
         ```
 
-1. In Dockerfile.develop
+1. In Dockerfile.develop, you'll make similar changes as in Dockerfile. The difference is that Dockerfile.develop is intended for development (and is referred to in the `azds.yaml` file) and Dockerfile could be used for a production deployment.
     1. Change the command to expose port out of the container (instead of 80)
         ```
         EXPOSE 9024
