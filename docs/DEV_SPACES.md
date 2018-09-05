@@ -129,7 +129,7 @@ As part of the [Azure Dev Spaces][azds] set up, files are added to the `WebServi
     ```
     - Check the `WebService/appsettings.ini` file for more on which environment variables are required by the service.
 
-1.	In Dockerfile you can make the changes similar to Dockerfile.develop or keep it as it is. The difference between the two files is that Dockerfile.develop is intended for development (and is referred to in the `azds.yaml` file) and Dockerfile could be used for a production deployment.
+1.	In Dockerfile you'll make following changes similar to Dockerfile.develop. The difference between the two files is that Dockerfile.develop is intended for development (and is referred to in the `azds.yaml` file) and Dockerfile could be used for a production deployment.
 
 1. In Dockerfile.develop, you'll make following changes as in Dockerfile. 
     1. Change the command to expose port out of the container (instead of 80)
