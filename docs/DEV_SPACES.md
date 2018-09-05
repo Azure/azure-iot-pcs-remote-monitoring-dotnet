@@ -113,7 +113,7 @@ As part of the [Azure Dev Spaces][azds] set up, files are added to the `WebServi
               .....
               - "!**/*.{sln,csproj,sh}"
         ```
-    1. In the same subsection also change the "command" to 
+    1. In the same subsection also change the field "command" to 
         ```
         command:  ["sh", "/src/WebService/azds_entrypoint.sh"]
         ```
