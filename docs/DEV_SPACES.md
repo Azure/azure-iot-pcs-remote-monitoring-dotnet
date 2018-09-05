@@ -113,7 +113,7 @@ As part of the [Azure Dev Spaces][azds] set up, files are added to the `WebServi
               .....
               - "!**/*.{sln,csproj,sh}"
         ```
-    1. In the same subsection also change the 'command' to 
+    1. In the same subsection also change the "command" to 
         ```
         command:  ["sh", "/src/WebService/azds_entrypoint.sh"]
         ```
@@ -136,7 +136,7 @@ As part of the [Azure Dev Spaces][azds] set up, files are added to the `WebServi
         ```
         EXPOSE 9024
         ```
-    1. Add a command to copy all the .csproj and .sln files from all the projects. Please make sure the copy command source and target have asa-manager\/ prefix.
+    1. Add a command to copy all the .csproj and .sln files from all the projects. Please make sure the copy command source and target have "asa-manager\/" prefix.
         ```
         COPY ["asa-manager/asa-manager.sln", "asa-manager/"]
         COPY ["asa-manager/DeviceGroupsAgent/DeviceGroupsAgent.csproj", "asa-manager/DeviceGroupsAgent/"]
