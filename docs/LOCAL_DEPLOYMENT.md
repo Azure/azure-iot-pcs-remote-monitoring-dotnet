@@ -33,7 +33,7 @@ git submodule foreach git pull origin master
 1) Follow the step 1 & 2 of "existing cloned repo". You will not require to delete anything. Ensure you have services sub-module, which contains all the microservices.
 &nbsp; 
 ### Steps to deploy the microservices locally
-Follow the documentation [here](https://github.com/Azure/remote-monitoring-services-dotnet/blob/syntax_changes/docs/LOCAL_DEPLOYMENT.md).
+Follow the documentation [here](https://github.com/Azure/remote-monitoring-services-dotnet/blob/master/docs/LOCAL_DEPLOYMENT.md).
 &nbsp; 
 
 ## Structure of repository
