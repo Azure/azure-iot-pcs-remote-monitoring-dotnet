@@ -7,6 +7,9 @@ This document and other documents, referenced here, contain steps to git clone t
 ### Steps to clone the restructured repository
 #### If you have an existing cloned repository
 1) Use recursive clone to clone the repository and the sub-modules.
+```
+git clone --recurse-submodules  https://github.com/Azure/azure-iot-pcs-remote-monitoring-dotnet.git
+```
 ````console
 #### For git version 2.17.1
 abc@pcs git clone --recurse-submodules  https://github.com/Azure/azure-iot-pcs-remote-monitoring-dotnet.git
@@ -24,7 +27,7 @@ Submodule 'webui' (https://github.com/Azure/azure-iot-pcs-remote-monitoring-webu
 1) Follow the step 1  of "existing cloned repo". You will not require to delete anything. Ensure you have services sub-module, which contains all the microservices.
 &nbsp; 
 ### Steps to deploy the microservices locally
-Follow the documentation [here](https://github.com/Azure/remote-monitoring-services-dotnet).
+Follow the documentation [here](https://github.com/Azure/remote-monitoring-services-dotnet/blob/syntax_changes/docs/LOCAL_DEPLOYMENT.md).
 &nbsp; 
 
 ## Structure of repository
