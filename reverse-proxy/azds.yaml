@@ -1,0 +1,23 @@
+kind: helm-release
+apiVersion: 1.0
+build:
+  context: .
+  dockerfile: Dockerfile
+install:
+  chart: charts/reverse-proxy
+  values:
+  - values.dev.yaml?
+  - secrets.dev.yaml?
+  set:
+    replicaCount: 1
+    image:
+      tag: $(tag)
+      pullPolicy: Never
+    ingress:
+      hosts:
+      # This expands to [space.s.]reverse-proxy.<guid>.<region>.aksapp.io
+      - $(spacePrefix)reverse-proxy$(hostSuffix)
+configurations:
+  develop:
+    build:
+      useGitIgnore: true
