@@ -55,9 +55,7 @@ You can find information about customizing the remote monitoring solution [here]
 
 Architecture Overview
 =====================
-<div align="center">
-<img src="https://user-images.githubusercontent.com/33666587/39657028-0e768cce-4fb9-11e8-8ee8-5192cbba31f1.png" width="700" height="auto"/>
-</div>
+![alt text](https://github.com/Azure/azure-iot-pcs-remote-monitoring-dotnet/blob/master/docs/architecture.png)
 
 [Learn more](https://docs.microsoft.com/azure/iot-suite/iot-suite-remote-monitoring-sample-walkthrough) about the Remote Monitoring architecture, including the use of microservices and Docker containers.
 
