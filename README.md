@@ -38,7 +38,7 @@ Getting Started
 There are two ways to deploy a solution:
 1) Deploy using the web interface using the instructions [here](https://docs.microsoft.com/azure/iot-suite/iot-suite-remote-monitoring-deploy).
 2) Deploy using the [command line](https://docs.microsoft.com/azure/iot-suite/iot-suite-remote-monitoring-deploy-cli).
-3) Deploy locally using instructions [here](https://github.com/Azure/azure-iot-pcs-remote-monitoring-dotnet/blob/master/docs/LOCAL_DEPLOYMENT.md).
+3) Deploy locally using instructions [here](https://docs.microsoft.com/azure/iot-accelerators/iot-accelerators-remote-monitoring-deploy-local).
 
 Common Scenarios
 ================
