@@ -2,6 +2,9 @@
 [![Issues][issues-badge]][issues-url]
 [![Gitter][gitter-badge]][gitter-url]
 
+### **Note:** As of December 10th 2020, Remote Monitoring solution accelerator is no longer supported. All supporting repositories have been archived. Check the [FAQ](https://docs.microsoft.com/en-us/azure/iot-accelerators/iot-accelerators-faq) to learn more.
+
+
 Remote Monitoring Solution with Azure IoT
 ========
 <div align="center">
